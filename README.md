@@ -4,6 +4,12 @@ A customized article class for LaTeX.
 
 ## Usage
 
+`goose-article` is a customized class designed for scientific articles. The usage is similar to the default `article`-class while the class takes care of formatting.
+
+By default most of the standard LaTeX-packages are loaded. Any of these packages can be re-loaded, with other defaults, without problems. In addition, the title, the authors and their affiliations, contact information, and optionally a header should be specified.
+
+This results in the following structure:
+
 ```latex
 %!TEX program = xelatex
 \documentclass[...]{goose-article}
@@ -29,9 +35,9 @@ A customized article class for LaTeX.
 % Text to put in the header. The page number is always used.
 \header{...}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%
 \begin{document}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%%%
 
 \maketitle
 
@@ -45,16 +51,12 @@ A customized article class for LaTeX.
 
 \bibliography{...}
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%
 \end{document}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%%%%%%
 ```
 
-## Structure
-
-`goose-article` is a customized class designed for scientific articles. The usage is similar to the default `article`-class while the class takes care of formatting.
-
-By default most of the standard LaTeX-packages are loaded. Any of these packages can be re-loaded, with other defaults, without problems. In addition, the title, the authors and their affiliations, contact information, and optionally a header should be specified.
+>   Note that the first line `%!TEX program = xelatex` is only needed if a non-LaTeX-standard font is selected. In fact, only when an editor is used which supports compiler selection this way. For those unfamiliar, XeLaTeX is similar to `pdflatex` but is allows for the usage of TrueType-fonts.
 
 ## Options
 
@@ -80,4 +82,4 @@ Citations and references are handled using [natbib](http://ctan.org/pkg/natbib).
 
 Following standard natbib, one can use `\cite{...}` or `\citep{...}` for normal citations and `\citet{...}` to include the name. [See also this cheat-sheet](http://merkel.texture.rocks/Latex/natbib.php).
 
-Note that the outputted reference-list depends largely on the content of the included `bib`-file. A simple command-line tool, [bibparse](#bibparse), is available to clean-up arbitrary `bib`-files.
+Note that the outputted reference-list depends largely on the content of the included `bib`-file. A simple command-line tool, [bibparse](https://github.com/tdegeus/bibparse), is available to clean-up arbitrary `bib`-files.
