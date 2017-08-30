@@ -2,6 +2,13 @@
 
 A customized article class for LaTeX.
 
+>   This library is free to use. Any additions are very much appreciated, in terms of suggested functionality, code, documentation, testimonials, word of mouth advertisement, .... As always, the code comes with no guarantee. None of the developers can be held responsible for possible mistakes or misuse.
+>   
+>   Bug reports or feature requests can be filed on GitHub.
+>   
+>   (c - MIT) T.W.J. de Geus (Tom) | tom@geus.me | www.geus.me | [github.com/tdegeus/goose-article](http://github.com/tdegeus/goose-article)
+
+
 ## Usage
 
 `goose-article` is a customized class designed for scientific articles. The usage is similar to the default `article`-class while the class takes care of formatting.
@@ -35,9 +42,9 @@ This results in the following structure:
 % Text to put in the header. The page number is always used.
 \header{...}
 
-% %%%%%%%%%%%%%%
+% =============================
+
 \begin{document}
-% %%%%%%%%%%%%%%
 
 \maketitle
 
@@ -51,9 +58,7 @@ This results in the following structure:
 
 \bibliography{...}
 
-% %%%%%%%%%%%%
 \end{document}
-% %%%%%%%%%%%%
 ```
 
 >   Note that the first line `%!TEX program = xelatex` is only needed if a non-LaTeX-standard font is selected. In fact, only when an editor is used which supports compiler selection this way. For those unfamiliar, XeLaTeX is similar to `pdflatex` but is allows for the usage of TrueType-fonts.
