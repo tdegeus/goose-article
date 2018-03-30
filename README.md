@@ -83,7 +83,7 @@ This results in the following structure:
 
 ## Citations
 
-Citations and references are handled using [natbib](http://ctan.org/pkg/natbib). In this class, the `unsrtnat` layout is used. Thereby, the extended `unsrtnat.bst` is available that includes output for the `eprint` field. The `goose-article` class creates commands to convert the `doi` and `eprint` fields to links (to `doi.org` and `arxiv.org` respectively).
+Citations and references are handled using [natbib](http://ctan.org/pkg/natbib). In this class, the `unsrtnat` layout is used. Thereby, the extended `unsrtnat.bst` is available that includes output for the `arxivid` field. The `goose-article` class creates commands to convert the `doi` and `arxivid` fields to links (to `doi.org` and `arxiv.org` respectively).
 
 Following standard natbib, one can use `\cite{...}` or `\citep{...}` for normal citations and `\citet{...}` to include the name. [See also this cheat-sheet](http://merkel.texture.rocks/Latex/natbib.php).
 

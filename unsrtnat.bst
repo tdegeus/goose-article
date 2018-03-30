@@ -50,7 +50,7 @@ ENTRY
     booktitle
     chapter
     doi
-    eprint
+    arxivid
     eid
     edition
     editor
@@ -297,10 +297,10 @@ FUNCTION {format.doi}
   if$
 }
 
-FUNCTION {format.eprint}
-{ eprint empty$
+FUNCTION {format.arxivid}
+{ arxivid empty$
     { "" }
-    { new.block "\eprint{" eprint * "}" * }
+    { new.block "\arxivid{" arxivid * "}" * }
   if$
 }
 
@@ -728,7 +728,7 @@ FUNCTION {article}
   if$
   format.issn output
   format.doi output
-  format.eprint output
+  format.arxivid output
   format.url output
   new.block
   note output
@@ -766,7 +766,7 @@ FUNCTION {book}
   format.date "year" output.check
   format.isbn output
   format.doi output
-  format.eprint output
+  format.arxivid output
   format.url output
   new.block
   note output
@@ -785,7 +785,7 @@ FUNCTION {booklet}
   format.date output
   format.isbn output
   format.doi output
-  format.eprint output
+  format.arxivid output
   format.url output
   new.block
   note output
@@ -825,7 +825,7 @@ FUNCTION {inbook}
   format.date "year" output.check
   format.isbn output
   format.doi output
-  format.eprint output
+  format.arxivid output
   format.url output
   new.block
   note output
@@ -856,7 +856,7 @@ FUNCTION {incollection}
   if$
   format.isbn output
   format.doi output
-  format.eprint output
+  format.arxivid output
   format.url output
   new.block
   note output
@@ -895,7 +895,7 @@ FUNCTION {inproceedings}
   if$
   format.isbn output
   format.doi output
-  format.eprint output
+  format.arxivid output
   format.url output
   new.block
   note output
@@ -987,7 +987,7 @@ FUNCTION {proceedings}
   publisher output
   format.isbn output
   format.doi output
-  format.eprint output
+  format.arxivid output
   format.url output
   new.block
   note output
@@ -1317,9 +1317,9 @@ FUNCTION {begin.bib}
   write$ newline$
   "\expandafter\ifx\csname urlstyle\endcsname\relax"
   write$ newline$
-  "  \providecommand{\eprint}[1]{eprint: #1}\else"
+  "  \providecommand{\arxivid}[1]{arxivid: #1}\else"
   write$ newline$
-  "  \providecommand{\eprint}{eprint: \begingroup \urlstyle{rm}\Url}\fi"
+  "  \providecommand{\arxivid}{arxivid: \begingroup \urlstyle{rm}\Url}\fi"
   write$ newline$
   "\expandafter\ifx\csname urlstyle\endcsname\relax"
   write$ newline$

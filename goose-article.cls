@@ -1,11 +1,11 @@
 % ------------------------------------------------------------------------------
 %  @LaTeX-class-file{
 %     filename        = "goose-article.cls",
-%     version         = "0.3",
-%     date            = "16 November 2016",
+%     version         = "0.1.0",
+%     date            = "1 April 2018",
 %     codetable       = "ISO/ASCII",
 %     keywords        = "LaTeX, goose-article",
-%     supported       = "http://tdegeus.github.io/GooseLaTeX",
+%     supported       = "https://github.com/tdegeus/goose-article",
 %     docstring       = "A customized article-class."
 % ------------------------------------------------------------------------------
 
@@ -113,7 +113,7 @@
 
 % define DOI command
 \newcommand*{\doi}[1]{\sloppy\href{http://dx.doi.org/#1}{doi:~#1}}
-\newcommand*{\eprint}[1]{\sloppy\href{http://arxiv.org/abs/#1}{arXiv:~#1}}
+\newcommand*{\arxivid}[1]{\sloppy\href{http://arxiv.org/abs/#1}{arXiv:~#1}}
 
 % ==============================================================================
 % Font
