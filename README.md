@@ -77,6 +77,14 @@ This results in the following structure:
 
     Set the line-spacing to double, useful during the review process.
 
+*   `twocolumn`
+
+    Use a two-column layout.
+
+*   `empty`
+    
+    Do not use any header (does not even show the page number).
+
 *   `namecite`
 
     Use names instead of numbers to cite to references.
@@ -87,4 +95,4 @@ Citations and references are handled using [natbib](http://ctan.org/pkg/natbib).
 
 Following standard natbib, one can use `\cite{...}` or `\citep{...}` for normal citations and `\citet{...}` to include the name. [See also this cheat-sheet](http://merkel.texture.rocks/Latex/natbib.php).
 
-Note that the outputted reference-list depends largely on the content of the included `bib`-file. A simple command-line tool, [bibparse](https://github.com/tdegeus/bibparse), is available to clean-up arbitrary `bib`-files.
+Note that the outputted reference-list depends largely on the content of the included `bib`-file. A simple command-line tool, [GooseBib](https://github.com/tdegeus/GooseBib), is available to clean-up arbitrary `bib`-files.

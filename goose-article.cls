@@ -41,6 +41,17 @@
 \let\if@doublespacing\iffalse
 \DeclareOption{doublespacing}{\let\if@doublespacing\iftrue}
 
+\newif\if@twocolumn
+\let\if@twocolumn\iffalse
+\DeclareOption{twocolumn}{\let\if@twocolumn\iftrue}
+
+% No header
+% ---------
+
+\newif\if@empty
+\let\if@empty\iffalse
+\DeclareOption{empty}{\let\if@empty\iftrue}
+
 % Font: [times,garamond,verdana]
 % ------------------------------
 
@@ -169,6 +180,16 @@
 \fi
 
 % ==============================================================================
+% Two-columns
+% ==============================================================================
+
+\if@twocolumn
+  \AtBeginDocument{%
+    \twocolumn
+  }%
+\fi
+
+% ==============================================================================
 % Hyperref
 % ==============================================================================
 
@@ -213,6 +234,7 @@
   {}
   {}
   {}
+  {}
 
 % spacing {left}{top}{bottom}, of:
 % - section
@@ -221,6 +243,9 @@
 % - subsection
 \titlespacing{\subsection}
   {0pt}{0.8em}{0.4em}
+% - paragraph
+\titlespacing{\paragraph}
+  {0pt}{0.8em}{0em}
 
 % no paragraph indent after header
 \AtBeginDocument{%
@@ -279,7 +304,10 @@
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
+\if@empty
+\else
 \fancyhead[RO,LE]{\scriptsize \thepage}
+\fi
 \newcommand{\header}[1]{\fancyhead[LO,RE]{\scriptsize\itshape#1}}
 
 % ==============================================================================
