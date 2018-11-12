@@ -1,7 +1,7 @@
 % ------------------------------------------------------------------------------
 %  @LaTeX-class-file{
 %     filename        = "goose-article.cls",
-%     version         = "0.1.0",
+%     version         = "0.1.1",
 %     date            = "1 April 2018",
 %     codetable       = "ISO/ASCII",
 %     keywords        = "LaTeX, goose-article",
@@ -95,6 +95,7 @@
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{authblk}
 \RequirePackage{hyperref}
+\RequirePackage{multicol}
 
 \renewcommand\thesubfigure{(\alph{subfigure})}
 
@@ -118,7 +119,7 @@
     \bibliographystyle{unsrtnat}
     \setlength{\bibsep}{3pt plus 0.3ex}
     \def\bibfont{\scriptsize}
-    \oldbibliography{#1}
+    \begin{multicols}{2}\raggedright\oldbibliography{#1}\end{multicols}
   }
 \fi
 
@@ -306,9 +307,11 @@
 \renewcommand{\footrulewidth}{0pt}
 \if@empty
 \else
-\fancyhead[RO,LE]{\scriptsize \thepage}
+\fancyhead[RO,LE]{\thepage}
 \fi
-\newcommand{\header}[1]{\fancyhead[LO,RE]{\scriptsize\itshape#1}}
+\newcommand{\header}[1]{\fancyhead[LO,RE]{#1}}
+\newcommand{\headerOdd}[1]{\fancyhead[LO]{#1}}
+\newcommand{\headerEven}[1]{\fancyhead[RE]{#1}}
 
 % ==============================================================================
 % Abstract and keywords
