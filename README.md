@@ -8,7 +8,7 @@ A customised article class for LaTeX.
 >   
 >   (c - MIT) T.W.J. de Geus (Tom) | tom@geus.me | www.geus.me | [github.com/tdegeus/goose-article](http://github.com/tdegeus/goose-article)
 
-## Outline
+## Contents
 
 <!-- MarkdownTOC -->
 
@@ -45,7 +45,7 @@ This results in the following structure:
 % The contact information.
 \contact{...} % E.g. "\href{mailto:tom@geus.me}{tom@geus.me}"
 
-% The name to put in the PDF information.
+% The author to put in the PDF information.
 \hypersetup{pdfauthor={...}}
 
 % Text to put in the header. The page number is always used.
