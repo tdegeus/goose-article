@@ -21,7 +21,7 @@ A customised article class for LaTeX.
 
 ## Usage
 
-`goose-article` is a customised class designed for scientific articles. The usage is similar to the default `article` class while the class takes care of formatting.
+`goose-article` is a customised class designed for scientific articles. The usage is similar to the default `article` class while the class takes care of formatting. To get started copy the files from [src/](src/) to to main directory of your project (always copy [goose-article.cls](src/goose-article.cls) and copy to your need [unsrtnat.bst](src/unsrtnat.bst) or [apalike.bst](src/apalike.bst)).
 
 By default most of the standard LaTeX packages are loaded. Any of these packages can be reloaded without problems (possibly using other options). In addition, the title, the authors and their affiliations, contact information, and optionally a header can be specified.
 
