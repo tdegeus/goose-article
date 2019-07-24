@@ -1,8 +1,8 @@
 % ------------------------------------------------------------------------------
 %  @LaTeX-class-file{
 %     filename        = "goose-article.cls",
-%     version         = "0.1.1",
-%     date            = "1 April 2018",
+%     version         = "0.2.0",
+%     date            = "February 2019",
 %     codetable       = "ISO/ASCII",
 %     keywords        = "LaTeX, goose-article",
 %     supported       = "https://github.com/tdegeus/goose-article",
@@ -112,7 +112,7 @@
     \setlength{\bibsep}{3pt plus 0.3ex}
     \def\bibfont{\scriptsize}
     \if@twocolumnbib
-    \begin{multicols}{2}\raggedright\oldbibliography{#1}\end{multicols}{#1}
+    \begin{multicols}{2}\raggedright\oldbibliography{#1}\end{multicols}
     \else
     \raggedright\oldbibliography{#1}
     \fi
@@ -125,7 +125,7 @@
     \setlength{\bibsep}{3pt plus 0.3ex}
     \def\bibfont{\scriptsize}
     \if@twocolumnbib
-    \begin{multicols}{2}\raggedright\oldbibliography{#1}\end{multicols}{#1}
+    \begin{multicols}{2}\raggedright\oldbibliography{#1}\end{multicols}
     \else
     \raggedright\oldbibliography{#1}
     \fi
