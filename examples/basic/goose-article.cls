@@ -1,8 +1,8 @@
 % ------------------------------------------------------------------------------
 %  @LaTeX-class-file{
 %     filename        = "goose-article.cls",
-%     version         = "0.2.0",
-%     date            = "February 2019",
+%     version         = "0.2.1",
+%     date            = "July 2019",
 %     codetable       = "ISO/ASCII",
 %     keywords        = "LaTeX, goose-article",
 %     supported       = "https://github.com/tdegeus/goose-article",
@@ -258,20 +258,21 @@
 }
 
 % ==============================================================================
-% Title
+% Title, authors, affiliation layout
 % ==============================================================================
 
-% title, authors, affiliation layout
-% - contact
+% add option
 \newcommand{\contact}[1]{\date{{#1}}}
-% - basic settings
+
+% basic settings
 \newcommand{\nl}{\vspace*{-.3em}\protect\\ \fontsize{9}{10.8}\itshape}
 \renewcommand\Authfont{\fontsize{11}{14.4}\selectfont}
 \renewcommand\Affilfont{\fontsize{9}{10.8}\itshape}
 \renewcommand*{\Authsep}{, }
 \renewcommand*{\Authand}{, }
 \renewcommand*{\Authands}{, }
-% - actual layout
+
+% actual layout
 \renewcommand{\maketitle}{%
   \newpage
   \null
@@ -294,10 +295,14 @@
 }
 
 % ==============================================================================
-% Numbering
+% Keywords
 % ==============================================================================
 
-% sub-figures
+\newcommand{\keywords}[1]{\vspace*{0.5eM}\noindent\textbf{Keywords: }#1}
+
+% ==============================================================================
+% Numbering
+% ==============================================================================
 
 \renewcommand\thesubfigure{(\alph{subfigure})}
 
