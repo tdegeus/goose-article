@@ -1,8 +1,8 @@
 % ------------------------------------------------------------------------------
 %  @LaTeX-class-file{
 %     filename        = "goose-article.cls",
-%     version         = "0.2.1",
-%     date            = "July 2019",
+%     version         = "0.3.0",
+%     date            = "December 2019",
 %     codetable       = "ISO/ASCII",
 %     keywords        = "LaTeX, goose-article",
 %     supported       = "https://github.com/tdegeus/goose-article",
@@ -16,47 +16,52 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{goose-article}[2016/11/16 v0.3 customized article class]
 
-% load default article class
-\LoadClass[a4paper,fleqn,twoside]{article}
-
 % ==============================================================================
 % Options
 % ==============================================================================
 
-% bibliography [namecite]
-% -----------------------
+% bibliography [namecite, twocolumnbib]
+% -------------------------------------
 
 \newif\if@namecite
 \let\if@namecite\iffalse
 \DeclareOption{namecite}{\let\if@namecite\iftrue}
 
-% Review: [narrow,doublespacing]
-% ------------------------------
+\newif\if@twocolumnbib
+\let\if@twocolumnbib\iffalse
+\DeclareOption{twocolumnbib}{\let\if@twocolumnbib\iftrue}
+
+% Review [narrow, wide, doublespacing]
+% ------------------------------------
 
 \newif\if@narrow
 \let\if@narrow\iffalse
 \DeclareOption{narrow}{\let\if@narrow\iftrue}
 
+\newif\if@wide
+\let\if@wide\iffalse
+\DeclareOption{wide}{\let\if@wide\iftrue}
+
 \newif\if@doublespacing
 \let\if@doublespacing\iffalse
 \DeclareOption{doublespacing}{\let\if@doublespacing\iftrue}
 
-% No header: [empty]
-% ------------------
+% Header [empty]
+% --------------
 
 \newif\if@empty
 \let\if@empty\iffalse
 \DeclareOption{empty}{\let\if@empty\iftrue}
 
-% Single-column bibliography [twocolumnbib]
-% -----------------------------------------
+% Math [fleqn]
+% ------------
 
-\newif\if@twocolumnbib
-\let\if@twocolumnbib\iffalse
-\DeclareOption{twocolumnbib}{\let\if@twocolumnbib\iftrue}
+\newif\if@fleqn
+\let\if@fleqn\iffalse
+\DeclareOption{fleqn}{\let\if@fleqn\iftrue}
 
-% Font: [times,garamond,verdana]
-% ------------------------------
+% Font [times, garamond, verdana]
+% -------------------------------
 
 \newif\if@font
 \let\if@font\iffalse
@@ -82,9 +87,20 @@
 % Packages
 % ==============================================================================
 
-\RequirePackage[left=25mm,right=25mm,top=30mm,bottom=30mm]{geometry}
+\if@fleqn
+    \LoadClass[a4paper, fleqn, twoside]{article}
+\else
+    \LoadClass[a4paper, twoside]{article}
+\fi
+
 \if@narrow
-  \newgeometry{left=40mm,right=40mm,top=30mm,bottom=30mm}
+    \RequirePackage[left=40mm, right=40mm, top=30mm, bottom=30mm]{geometry}
+\else
+    \if@wide
+        \RequirePackage[left=10mm, right=10mm, top=20mm, bottom=20mm]{geometry}
+    \else
+        \RequirePackage[left=25mm, right=25mm, top=30mm, bottom=30mm]{geometry}
+    \fi
 \fi
 
 \RequirePackage{fix-cm}
@@ -92,44 +108,49 @@
 \RequirePackage[labelformat=simple]{subcaption}
 \RequirePackage{amssymb,amsfonts,bm}
 \RequirePackage{enumerate}
-\RequirePackage[fleqn]{amsmath}
+\if@fleqn
+    \RequirePackage[fleqn]{amsmath}
+\else
+    \RequirePackage{amsmath}
+\fi
 \RequirePackage[font={small},labelfont=bf,labelsep=period]{caption}
 \RequirePackage[bf]{titlesec}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{authblk}
 \RequirePackage{multicol}
 \RequirePackage{hyperref}
+\RequirePackage[capitalise]{cleveref}
 
 % ==============================================================================
 % Citation style
 % ==============================================================================
 
 \if@namecite
-  \RequirePackage{natbib}
-  \let\oldbibliography\bibliography
-  \renewcommand{\bibliography}[1]{%
-    \bibliographystyle{apalike}
-    \setlength{\bibsep}{3pt plus 0.3ex}
-    \def\bibfont{\scriptsize}
-    \if@twocolumnbib
-    \begin{multicols}{2}\raggedright\oldbibliography{#1}\end{multicols}
-    \else
-    \raggedright\oldbibliography{#1}
-    \fi
-  }
+    \RequirePackage{natbib}
+    \let\oldbibliography\bibliography
+    \renewcommand{\bibliography}[1]{%
+        \bibliographystyle{apalike}
+        \setlength{\bibsep}{3pt plus 0.3ex}
+        \def\bibfont{\scriptsize}
+        \if@twocolumnbib
+            \begin{multicols}{2}\raggedright\oldbibliography{#1}\end{multicols}
+        \else
+            \raggedright\oldbibliography{#1}
+        \fi
+    }
 \else
-  \RequirePackage[square,sort&compress,numbers,comma]{natbib}
-  \let\oldbibliography\bibliography
-  \renewcommand{\bibliography}[1]{%
-    \bibliographystyle{unsrtnat}
-    \setlength{\bibsep}{3pt plus 0.3ex}
-    \def\bibfont{\scriptsize}
-    \if@twocolumnbib
-    \begin{multicols}{2}\raggedright\oldbibliography{#1}\end{multicols}
-    \else
-    \raggedright\oldbibliography{#1}
-    \fi
-  }
+    \RequirePackage[square,sort&compress,numbers,comma]{natbib}
+    \let\oldbibliography\bibliography
+    \renewcommand{\bibliography}[1]{%
+        \bibliographystyle{unsrtnat}
+        \setlength{\bibsep}{3pt plus 0.3ex}
+        \def\bibfont{\scriptsize}
+        \if@twocolumnbib
+            \begin{multicols}{2}\raggedright\oldbibliography{#1}\end{multicols}
+        \else
+            \raggedright\oldbibliography{#1}
+        \fi
+    }
 \fi
 
 % define DOI command
@@ -141,41 +162,41 @@
 % ==============================================================================
 
 \if@font
-  \RequirePackage{mathspec}
-  \RequirePackage{fontspec}
+    \RequirePackage{mathspec}
+    \RequirePackage{fontspec}
 \fi
 
 \if@garamond
-  \AtBeginDocument{%
-    \setmathfont(Digits)[Numbers=OldStyle]{Garamond}%
-    \setromanfont[%
-      BoldFont={Garamond Bold},%
-      ItalicFont={Garamond Italic},%
-      Mapping=tex-text%
-    ]{Garamond}%
-  }%
+    \AtBeginDocument{%
+        \setmathfont(Digits)[Numbers=OldStyle]{Garamond}%
+        \setromanfont[%
+            BoldFont={Garamond Bold},%
+            ItalicFont={Garamond Italic},%
+            Mapping=tex-text%
+        ]{Garamond}%
+    }%
 \fi
 
 \if@verdana
-  \AtBeginDocument{%
-    \defaultfontfeatures{Mapping=tex-text}
-    \setmainfont[Mapping=tex-text]{Verdana}
-    \setsansfont{Verdana}
-    \renewcommand*{\familydefault}{\sfdefault}
-    \setmathfont(Greek,Digits,Latin){Verdana}
-    \setmathrm{Verdana}
-  }%
+    \AtBeginDocument{%
+        \defaultfontfeatures{Mapping=tex-text}
+        \setmainfont[Mapping=tex-text]{Verdana}
+        \setsansfont{Verdana}
+        \renewcommand*{\familydefault}{\sfdefault}
+        \setmathfont(Greek,Digits,Latin){Verdana}
+        \setmathrm{Verdana}
+    }%
 \fi
 
 \if@times
-  \AtBeginDocument{%
-    \setmathfont(Digits)[Numbers=OldStyle]{Times New Roman}%
-    \setromanfont[%
-      BoldFont={Times New Roman Bold},%
-      ItalicFont={Times New Roman Italic},%
-      Mapping=tex-text%
-    ]{Times New Roman}%
-  }%
+    \AtBeginDocument{%
+        \setmathfont(Digits)[Numbers=OldStyle]{Times New Roman}%
+        \setromanfont[%
+            BoldFont={Times New Roman Bold},%
+            ItalicFont={Times New Roman Italic},%
+            Mapping=tex-text%
+        ]{Times New Roman}%
+    }%
 \fi
 
 % ==============================================================================
@@ -183,10 +204,10 @@
 % ==============================================================================
 
 \if@doublespacing
-  \AtBeginDocument{%
-    \usepackage{setspace}
-    \doublespacing
-  }%
+    \AtBeginDocument{%
+        \usepackage{setspace}
+        \doublespacing
+    }%
 \fi
 
 % ==============================================================================
@@ -194,16 +215,16 @@
 % ==============================================================================
 
 \AtBeginDocument{%
-  \hypersetup{%
-    pdftitle=\@title,
-    citecolor=Blue,
-    filecolor=black,
-    linkcolor=Blue,
-    urlcolor=Blue,
-    breaklinks,
-    hidelinks,
-    bookmarksopen=true,
-  }%
+    \hypersetup{%
+        pdftitle=\@title,
+        citecolor=Blue,
+        filecolor=black,
+        linkcolor=Blue,
+        urlcolor=Blue,
+        breaklinks,
+        hidelinks,
+        bookmarksopen=true,
+    }%
 }
 
 % ==============================================================================
@@ -213,48 +234,48 @@
 % {command}{format}{label}{sep}{before-code}{after-code}
 % - section
 \titleformat
-  {\section}
-  {\normalfont\large\bfseries}
-  {\thesection}
-  {1em}
-  {}
-  {}
+    {\section}
+    {\normalfont\large\bfseries}
+    {\thesection}
+    {1em}
+    {}
+    {}
 % - subsection
 \titleformat
-  {\subsection}
-  {\normalfont\normalsize\bfseries}
-  {\thesubsection}
-  {1em}
-  {}
-  {}
+    {\subsection}
+    {\normalfont\normalsize\bfseries}
+    {\thesubsection}
+    {1em}
+    {}
+    {}
 % - paragraph
 \titleformat
-  {\paragraph}
-  {\normalfont\normalsize\bfseries}
-  {}
-  {}
-  {}
-  {}
+    {\paragraph}
+    {\normalfont\normalsize\bfseries}
+    {}
+    {}
+    {}
+    {}
 
 % spacing {left}{top}{bottom}, of:
 % - section
 \titlespacing{\section}
-  {0pt}{1eM}{0.8em}
+    {0pt}{1eM}{0.8em}
 % - subsection
 \titlespacing{\subsection}
-  {0pt}{0.8em}{0.4em}
+    {0pt}{0.8em}{0.4em}
 % - paragraph
 \titlespacing{\paragraph}
-  {0pt}{0.8em}{0em}
+    {0pt}{0.8em}{0em}
 
 % no paragraph indent after header
 \AtBeginDocument{%
-  \makeatletter
-  \let\orig@afterheading\@afterheading
-  \def\@afterheading{%
-     \@afterindentfalse
-    \orig@afterheading}
-  \makeatother
+    \makeatletter
+    \let\orig@afterheading\@afterheading
+    \def\@afterheading{%
+        \@afterindentfalse
+        \orig@afterheading}
+    \makeatother
 }
 
 % ==============================================================================
@@ -274,24 +295,24 @@
 
 % actual layout
 \renewcommand{\maketitle}{%
-  \newpage
-  \null
-  \vskip 2em%
-  \begin{center}%
-  \let \footnote \thanks
-    {\Large\bfseries \@title \par}%
-    \vskip 1.5em%
-    {\normalsize
-      \lineskip .5em%
-      \begin{tabular}[t]{c}%
-        \@author
-      \end{tabular}\par}%
-    \vskip 0.5em%
-    {\small \@date}%
-  \end{center}%
-  \par
-  \vskip 1.5em
-  \thispagestyle{fancy}
+    \newpage
+    \null
+    \vskip 2em%
+    \begin{center}%
+    \let \footnote \thanks
+        {\Large\bfseries \@title \par}%
+        \vskip 1.5em%
+        {\normalsize
+            \lineskip .5em%
+            \begin{tabular}[t]{c}%
+                \@author
+            \end{tabular}\par}%
+        \vskip 0.5em%
+        {\small \@date}%
+    \end{center}%
+    \par
+    \vskip 1.5em
+    \thispagestyle{fancy}
 }
 
 % ==============================================================================
@@ -319,7 +340,7 @@
 \renewcommand{\footrulewidth}{0pt}
 \if@empty
 \else
-\fancyhead[RO,LE]{\thepage}
+    \fancyhead[RO,LE]{\thepage}
 \fi
 \newcommand{\header}[1]{\fancyhead[LO,RE]{#1}}
 \newcommand{\headerOdd}[1]{\fancyhead[LO]{#1}}

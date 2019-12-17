@@ -10,27 +10,30 @@
 \author[1]{T.W.J.~de~Geus$^{*,}$}
 
 \affil[1]{
-  Physics Institute, \'{E}cole Polytechnique F\'{e}d\'{e}rale de Lausanne (EPFL) \nl
-  Switzerland
-}
+  Physics Institute,
+  \'{E}cole Polytechnique F\'{e}d\'{e}rale de Lausanne (EPFL) \nl
+  Switzerland}
 
-\contact{%
-  $^*$Contact: %
-  \href{mailto:tom@geus.me}{tom@geus.me} %
-  \hspace{1mm}--\hspace{1mm} %
-  \href{http://www.geus.me}{www.geus.me}%
-}
+\contact{
+  $^*$Contact:
+  \href{mailto:tom@geus.me}{tom@geus.me}
+  \hspace{1mm}--\hspace{1mm}
+  \href{http://www.geus.me}{www.geus.me}}
 
 \hypersetup{pdfauthor={T.W.J. de Geus}}
 
 \header{goose-article}
 
+
 \begin{document}
+
 
 \twocolumn[
 \begin{@twocolumnfalse}
 
+
 \maketitle
+
 
 \begin{abstract}
 \noindent
@@ -39,41 +42,55 @@ Sed feugiat. Cum sociis natoque penatibus et magnis dis parturient montes, nasce
 \keywords{\LaTeX-style; example}
 \end{abstract}
 
+
 \end{@twocolumnfalse}
 ]
 \sloppy
 
 \section{Introduction}
-\lipsum[2-3] \citep{Geus10,Geus11,Geus12,Geus13,Geus14,Geus15,Geus16,Geus17}
 
-\begin{figure}
-  \centering
-  \includegraphics[width=\linewidth]{example-image-a}
-  \caption{Caption here}
-  \label{fig:a}
+\lipsum[2-4] \citep{Geus10,Geus11,Geus12,Geus13,Geus14,Geus15,Geus16,Geus17}
+\begin{equation}
+    f(x) = x^2
+\end{equation}
+
+\lipsum[5-6]
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=.5\linewidth]{example-image-a}
+    \caption{Caption here}
+    \label{fig:a}
 \end{figure}
+
 
 \section{Body}
-\lipsum[5-10] \citet{Geus10,Geus11,Geus12,Geus13,Geus14,Geus15,Geus16,Geus17} ...
 
-\begin{figure}
-  \centering
-  \includegraphics[width=\linewidth]{example-image-b}
-  \caption{Caption here}
-  \label{fig:b}
+\lipsum[7-12] \citet{Geus10,Geus11,Geus12,Geus13,Geus14,Geus15,Geus16,Geus17} ...
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=.5\linewidth]{example-image-b}
+    \caption{Caption here}
+    \label{fig:b}
 \end{figure}
 
+
 \bibliography{refs}
+
 
 \onecolumn
 \justify
 \appendix
 
+
 \begin{center}
-\Large\textbf{Appendix}
+    \Large\textbf{Appendix}
 \end{center}
 
+
 \section{Nomenclature}
+
 \lipsum[11-15]
 
 \end{document}
