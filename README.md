@@ -20,7 +20,7 @@ This library is free to use. Any additions are very much appreciated, in terms o
 
 Download: [.zip file](https://github.com/tdegeus/goose-article/zipball/master) | [.tar.gz file](https://github.com/tdegeus/goose-article/tarball/master).
 
-(c - [GPLv3](https://github.com/tdegeus/goose-article/blob/master/LICENSE)) T.W.J. de Geus (Tom) | tom@geus.me | www.geus.me | [github.com/tdegeus/goose-article](https://github.com/tdegeus/goose-article)
+(c - [MIT](https://github.com/tdegeus/goose-article/blob/master/LICENSE)) T.W.J. de Geus (Tom) | tom@geus.me | www.geus.me | [github.com/tdegeus/goose-article](https://github.com/tdegeus/goose-article)
 
 # Usage
 
