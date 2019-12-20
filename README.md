@@ -75,9 +75,9 @@ This results in the following structure:
 
     Choose a font. The default computer-modern font is used if no font is specified. If you select one of these fonts, switch in compilation from using `pdflatex` to `xelatex`. XeLaTeX is similar to `pdflatex` but it allows for the usage of TrueType-fonts.
 
-*   `narrow`, `widen`
+*   `narrow`, `wide`, `wwide`
 
-    Widen or narrow the margins of the page.
+    Change the page margins (from largest to smallest margins: `narrow`, (normal), `wide`, `wwide`).
 
 *   `doublespacing`
 

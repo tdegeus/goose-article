@@ -1,7 +1,7 @@
 % ------------------------------------------------------------------------------
 %  @LaTeX-class-file{
 %     filename        = "goose-article.cls",
-%     version         = "0.3.0",
+%     version         = "0.4.0",
 %     date            = "December 2019",
 %     codetable       = "ISO/ASCII",
 %     keywords        = "LaTeX, goose-article",
@@ -14,7 +14,7 @@
 % ==============================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{goose-article}[2016/11/16 v0.3 customized article class]
+\ProvidesClass{goose-article}[2019/12/20 v0.4.0 customized article class]
 
 % ==============================================================================
 % Options
@@ -31,12 +31,16 @@
 \let\if@twocolumnbib\iffalse
 \DeclareOption{twocolumnbib}{\let\if@twocolumnbib\iftrue}
 
-% Review [narrow, wide, doublespacing]
-% ------------------------------------
+% Layout [narrow, wide, wwide, doublespacing]
+% -------------------------------------------
 
 \newif\if@narrow
 \let\if@narrow\iffalse
 \DeclareOption{narrow}{\let\if@narrow\iftrue}
+
+\newif\if@wwide
+\let\if@wwide\iffalse
+\DeclareOption{wwide}{\let\if@wwide\iftrue}
 
 \newif\if@wide
 \let\if@wide\iffalse
@@ -96,10 +100,14 @@
 \if@narrow
     \RequirePackage[left=40mm, right=40mm, top=30mm, bottom=30mm]{geometry}
 \else
-    \if@wide
+    \if@wwide
         \RequirePackage[left=10mm, right=10mm, top=20mm, bottom=20mm]{geometry}
     \else
-        \RequirePackage[left=25mm, right=25mm, top=30mm, bottom=30mm]{geometry}
+        \if@wide
+            \RequirePackage[left=15mm, right=15mm, top=20mm, bottom=20mm]{geometry}
+        \else
+            \RequirePackage[left=25mm, right=25mm, top=30mm, bottom=30mm]{geometry}
+        \fi
     \fi
 \fi
 
