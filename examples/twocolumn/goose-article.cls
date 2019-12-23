@@ -1,7 +1,7 @@
 % ------------------------------------------------------------------------------
 %  @LaTeX-class-file{
 %     filename        = "goose-article.cls",
-%     version         = "0.4.0",
+%     version         = "0.5.0",
 %     date            = "December 2019",
 %     codetable       = "ISO/ASCII",
 %     keywords        = "LaTeX, goose-article",
@@ -81,6 +81,13 @@
 \newif\if@verdana
 \let\if@verdana\iffalse
 \DeclareOption{verdana}{\let\if@verdana\iftrue\let\if@font\iftrue}
+
+% Hyperref [showlinks]
+% --------------------
+
+\newif\if@showlinks
+\let\if@showlinks\iffalse
+\DeclareOption{showlinks}{\let\if@showlinks\iftrue\let\if@font\iftrue}
 
 % Process options
 % ---------------
@@ -222,18 +229,32 @@
 % Hyperref
 % ==============================================================================
 
-\AtBeginDocument{%
-    \hypersetup{%
-        pdftitle=\@title,
-        citecolor=Blue,
-        filecolor=black,
-        linkcolor=Blue,
-        urlcolor=Blue,
-        breaklinks,
-        hidelinks,
-        bookmarksopen=true,
-    }%
-}
+\if@showlinks
+    \AtBeginDocument{%
+        \hypersetup{%
+            pdftitle=\@title,
+            citecolor=Blue,
+            filecolor=black,
+            linkcolor=Blue,
+            urlcolor=Blue,
+            breaklinks,
+            bookmarksopen=true,
+        }%
+    }
+\else
+    \AtBeginDocument{%
+        \hypersetup{%
+            pdftitle=\@title,
+            citecolor=Blue,
+            filecolor=black,
+            linkcolor=Blue,
+            urlcolor=Blue,
+            breaklinks,
+            hidelinks,
+            bookmarksopen=true,
+        }%
+    }
+\fi
 
 % ==============================================================================
 % Headers

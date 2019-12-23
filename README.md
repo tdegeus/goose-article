@@ -99,9 +99,15 @@ This results in the following structure:
 
     Use names instead of numbers to cite to references.
 
+*   `showlinks`
+
+    Highlight links in the displayed (i.e. not the printed one) PDF.
+
 # Citations
 
 Citations and references are handled using [natbib](http://ctan.org/pkg/natbib). In this class, the *unsrtnat* layout is used. Thereby, the extended [unsrtnat.bst](src/unsrtnat.bst) is available that includes output for the `arxivid` field. The *goose-article* class creates commands to convert the `doi` and `arxivid` fields to links (to `doi.org` and `arxiv.org` respectively). Similarly a customised *apalike* style is available ([apalike.bst](src/apalike.bst)).
+
+A little bit more customised is the *unsrtnat_hyperlink* bibliography style, in which the *doi* (or, if missing, the *arxivid* or *url*) are used to create a hyperlink behind the title.
 
 Following standard *natbib*, one can use `\cite{...}` or `\citep{...}` for normal citations and `\citet{...}` to include the name. [See also this cheat-sheet](http://merkel.texture.rocks/Latex/natbib.php).
 
