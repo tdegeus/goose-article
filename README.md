@@ -24,7 +24,7 @@ Download: [.zip file](https://github.com/tdegeus/goose-article/zipball/master) |
 
 # Usage
 
-*goose-article* is a customised class designed for scientific articles. The usage is similar to the default *article* class while the class takes care of formatting. To get started, copy the files from [src/](src/) to to main directory of your project (always copy [goose-article.cls](src/goose-article.cls) and copy to your need [unsrtnat.bst](src/unsrtnat.bst) or [apalike.bst](src/apalike.bst)).
+*goose-article* is a customised class designed for scientific articles. The usage is similar to the default *article* class while the class takes care of formatting. To get started, copy the files from [src/](src/) to to main directory of your project (always copy [goose-article.cls](src/goose-article.cls) and copy to your need [unsrtnat.bst](src/unsrtnat.bst), [unsrtnat_hyperlink.bst](src/unsrtnat_hyperlink.bst), or [apalike.bst](src/apalike.bst)).
 
 By default, most of the standard LaTeX packages are loaded. Any of these packages can be reloaded without problems (possibly using other options). In addition, the title, the authors and their affiliations, contact information, and optionally a header can be specified.
 
@@ -107,7 +107,7 @@ This results in the following structure:
 
 Citations and references are handled using [natbib](http://ctan.org/pkg/natbib). In this class, the *unsrtnat* layout is used. Thereby, the extended [unsrtnat.bst](src/unsrtnat.bst) is available that includes output for the `arxivid` field. The *goose-article* class creates commands to convert the `doi` and `arxivid` fields to links (to `doi.org` and `arxiv.org` respectively). Similarly a customised *apalike* style is available ([apalike.bst](src/apalike.bst)).
 
-A little bit more customised is the *unsrtnat_hyperlink* bibliography style, in which the *doi* (or, if missing, the *arxivid* or *url*) are used to create a hyperlink behind the title.
+A little bit more customised is the *unsrtnat_hyperlink* bibliography style, in which the *doi* (or, if missing, the *arxivid* or *url*) are used to create a hyperlink behind the title. The *doi* or *arxivid* are not explicitly shown in citation.
 
 Following standard *natbib*, one can use `\cite{...}` or `\citep{...}` for normal citations and `\citet{...}` to include the name. [See also this cheat-sheet](http://merkel.texture.rocks/Latex/natbib.php).
 
