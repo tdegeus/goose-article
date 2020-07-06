@@ -103,6 +103,10 @@ This results in the following structure:
 
     Highlight links in the displayed (i.e. not the printed one) PDF.
 
+*   `colorlinks`
+
+    Show links using a blue color. 
+
 # Citations
 
 Citations and references are handled using [natbib](http://ctan.org/pkg/natbib). In this class, the *unsrtnat* layout is used. Thereby, the extended [unsrtnat.bst](src/unsrtnat.bst) is available that includes output for the `arxivid` field. The *goose-article* class creates commands to convert the `doi` and `arxivid` fields to links (to `doi.org` and `arxiv.org` respectively). Similarly a customised *apalike* style is available ([apalike.bst](src/apalike.bst)).
