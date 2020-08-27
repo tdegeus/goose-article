@@ -1,0 +1,29 @@
+\documentclass{goose-article}
+
+\title{General \LaTeX trick: reference to dummy subfigure}
+\author{}
+
+\begin{document}
+
+\maketitle
+
+See \url{https://tex.stackexchange.com/a/552811/132350}.
+
+Here are the references:
+to the figure \cref{fig:label}, and to the subfigures \cref{fig:label:a} and \cref{fig:label:b}.
+
+\begin{figure}[htp]
+    \centering
+    \begin{subfigure}{\textwidth} % this 'subfigure' env. has no visible content
+        \refstepcounter{subfigure}\label{fig:label:a}
+        \refstepcounter{subfigure}\label{fig:label:b}
+    \end{subfigure}%
+    \includegraphics[width=.4\linewidth]{example-image-a}
+    \hspace{.02\textwidth}
+    \includegraphics[width=.4\linewidth]{example-image-b}
+    \caption{Caption here}
+    \label{fig:label}
+\end{figure}
+
+
+\end{document}

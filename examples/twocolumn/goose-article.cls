@@ -14,7 +14,7 @@
 % ==============================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{goose-article}[2020/07/01 v0.6.0 customized article class]
+\ProvidesClass{goose-article}[2020/08/26 v0.6.1 customized article class]
 
 % ==============================================================================
 % Options
@@ -87,11 +87,11 @@
 
 \newif\if@showlinks
 \let\if@showlinks\iffalse
-\DeclareOption{showlinks}{\let\if@showlinks\iftrue\let\if@font\iftrue}
+\DeclareOption{showlinks}{\let\if@showlinks\iftrue}
 
 \newif\if@colorlinks
 \let\if@colorlinks\iffalse
-\DeclareOption{colorlinks}{\let\if@colorlinks\iftrue\let\if@font\iftrue}
+\DeclareOption{colorlinks}{\let\if@colorlinks\iftrue}
 
 % Process options
 % ---------------
