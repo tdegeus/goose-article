@@ -124,8 +124,10 @@
 
 \RequirePackage{fix-cm}
 \RequirePackage{graphicx}
-\RequirePackage[labelformat=simple]{subcaption}
-\RequirePackage{amssymb,amsfonts,bm}
+\RequirePackage[subrefformat=parens,labelformat=parens]{subfig}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{bm}
 \RequirePackage{enumerate}
 \if@fleqn
     \RequirePackage[fleqn]{amsmath}
@@ -368,11 +370,6 @@
 
 \newcommand{\keywords}[1]{\vspace*{0.5eM}\noindent\textbf{Keywords: }#1}
 
-% ==============================================================================
-% Numbering
-% ==============================================================================
-
-\renewcommand\thesubfigure{(\alph{subfigure})}
 
 % ==============================================================================
 % Header and footer
