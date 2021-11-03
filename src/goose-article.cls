@@ -1,8 +1,8 @@
 % ------------------------------------------------------------------------------
 %  @LaTeX-class-file{
 %     filename        = "goose-article.cls",
-%     version         = "0.5.0",
-%     date            = "December 2019",
+%     version         = "0.7.0",
+%     date            = "November 2021",
 %     codetable       = "ISO/ASCII",
 %     keywords        = "LaTeX, goose-article",
 %     supported       = "https://github.com/tdegeus/goose-article",
@@ -14,7 +14,7 @@
 % ==============================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{goose-article}[2020/08/26 v0.6.1 customized article class]
+\ProvidesClass{goose-article}[2021/11/03 v0.7.0 customized article class]
 
 % ==============================================================================
 % Options
@@ -124,8 +124,10 @@
 
 \RequirePackage{fix-cm}
 \RequirePackage{graphicx}
-\RequirePackage[labelformat=simple]{subcaption}
-\RequirePackage{amssymb,amsfonts,bm}
+\RequirePackage[subrefformat=parens,labelformat=parens]{subfig}
+\RequirePackage{amssymb}
+\RequirePackage{amsfonts}
+\RequirePackage{bm}
 \RequirePackage{enumerate}
 \if@fleqn
     \RequirePackage[fleqn]{amsmath}
@@ -367,12 +369,6 @@
 % ==============================================================================
 
 \newcommand{\keywords}[1]{\vspace*{0.5eM}\noindent\textbf{Keywords: }#1}
-
-% ==============================================================================
-% Numbering
-% ==============================================================================
-
-\renewcommand\thesubfigure{(\alph{subfigure})}
 
 % ==============================================================================
 % Header and footer
