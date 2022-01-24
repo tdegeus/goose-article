@@ -1,0 +1,11 @@
+onlyOneBackUp: 1
+defaultIndent: "    "
+removeTrailingWhitespace: 1
+lookForAlignDelims:
+   align: 0
+modifyLineBreaks:
+  textWrapOptions:
+    columns: 100
+  oneSentencePerLine:
+    manipulateSentences: 1
+    removeSentenceLineBreaks: 0
