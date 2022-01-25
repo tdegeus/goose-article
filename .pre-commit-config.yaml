@@ -4,3 +4,5 @@ repos:
   hooks:
   - id: latexindent-conda
     args: [-s, -w, -l, -m]
+    types: [file]  # override `types: [tex]`
+    files: \.(tex|cls)$
