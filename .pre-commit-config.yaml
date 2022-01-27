@@ -4,5 +4,10 @@ repos:
   hooks:
   - id: latexindent-conda
     args: [-s, -w, -l, -m]
-    types: [file]  # override `types: [tex]`
-    files: \.(tex|cls)$
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.0.1
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+  - id: check-yaml
+  - id: debug-statements
