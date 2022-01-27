@@ -1,8 +1,8 @@
 onlyOneBackUp: 1
-defaultIndent: "    "
+defaultIndent: '    '
 removeTrailingWhitespace: 1
 lookForAlignDelims:
-   align: 0
+  align: 0
 modifyLineBreaks:
   textWrapOptions:
     columns: 100
