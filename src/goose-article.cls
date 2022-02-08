@@ -124,7 +124,7 @@
 
 \RequirePackage{fix-cm}
 \RequirePackage{graphicx}
-\RequirePackage[subrefformat=parens,labelformat=parens]{subfig}
+\RequirePackage{subfig}
 \RequirePackage{amssymb}
 \RequirePackage{amsfonts}
 \RequirePackage{bm}
@@ -138,6 +138,7 @@
 \RequirePackage[bf]{titlesec}
 \RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{authblk}
+\RequirePackage{ragged2e}
 \RequirePackage{multicol}
 \RequirePackage{hyperref}
 \RequirePackage[capitalise]{cleveref}
@@ -154,9 +155,9 @@
         \setlength{\bibsep}{3pt plus 0.3ex}
         \def\bibfont{\scriptsize}
         \if@twocolumnbib
-            \begin{multicols}{2}\raggedright\oldbibliography{#1}\end{multicols}
+            \begin{multicols}{2}\raggedright\oldbibliography{#1}\justifying\end{multicols}
         \else
-            \raggedright\oldbibliography{#1}
+            \raggedright\oldbibliography{#1}\justifying
         \fi
     }
 \else
@@ -167,9 +168,9 @@
         \setlength{\bibsep}{3pt plus 0.3ex}
         \def\bibfont{\scriptsize}
         \if@twocolumnbib
-            \begin{multicols}{2}\raggedright\oldbibliography{#1}\end{multicols}
+            \begin{multicols}{2}\raggedright\oldbibliography{#1}\justifying\end{multicols}
         \else
-            \raggedright\oldbibliography{#1}
+            \raggedright\oldbibliography{#1}\justifying
         \fi
     }
 \fi
@@ -280,42 +281,15 @@
 % Headers
 % ==============================================================================
 
-% {command}{format}{label}{sep}{before-code}{after-code}
-% - section
-\titleformat
-{\section}
-{\normalfont\large\bfseries}
-{\thesection}
-{1em}
-{}
-{}
-% - subsection
-\titleformat
-{\subsection}
-{\normalfont\normalsize\bfseries}
-{\thesubsection}
-{1em}
-{}
-{}
-% - paragraph
-\titleformat
-{\paragraph}
-{\normalfont\normalsize\bfseries}
-{}
-{}
-{}
-{}
+% \titleformat{command}[shape]{format}{label}{sep}{before}[after]
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}{}
+\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{}{}{}[.]
 
 % spacing {left}{top}{bottom}, of:
-% - section
-\titlespacing{\section}
-{0pt}{1eM}{0.8em}
-% - subsection
-\titlespacing{\subsection}
-{0pt}{0.8em}{0.4em}
-% - paragraph
-\titlespacing{\paragraph}
-{0pt}{0.8em}{0em}
+\titlespacing{\section}{0pt}{1eM}{0.8em}
+\titlespacing{\subsection}{0pt}{0.8em}{0.4em}
+\titlespacing{\paragraph}{0pt}{0.8em}{1em}
 
 % no paragraph indent after header
 \AtBeginDocument{%
