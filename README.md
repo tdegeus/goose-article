@@ -1,5 +1,5 @@
-[![ci](https://github.com/tdegeus/GooseSLURM/workflows/ci/badge.svg)](https://github.com/tdegeus/GooseSLURM/actions)
-[![pre-commit](https://github.com/tdegeus/GooseSLURM/workflows/pre-commit/badge.svg)](https://github.com/tdegeus/GooseSLURM/actions)
+[![ci](https://github.com/tdegeus/goose-article/workflows/CI/badge.svg)](https://github.com/tdegeus/goose-article/actions)
+[![pre-commit](https://github.com/tdegeus/goose-article/workflows/pre-commit/badge.svg)](https://github.com/tdegeus/goose-article/actions)
 
 # goose-article
 
