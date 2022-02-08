@@ -1,0 +1,38 @@
+\documentclass{goose-article}
+
+\title{General \LaTeX trick: reference to dummy subfigure}
+\author{}
+\usepackage{kantlipsum}
+
+\renewcommand{\thesubfigure}{\Alph{subfigure}}
+
+\begin{document}
+
+\maketitle
+
+See \url{https://tex.stackexchange.com/a/552811/132350} and
+\url{https://tex.stackexchange.com/q/612642/132350}.
+
+Here are the references:
+to the figure \cref{fig:1}, and to the subfigures \cref{fig:1a} and \cref{fig:1b}.
+
+\begin{figure}[htp]
+    \centering
+    \subfloat{\label{fig:1a}}
+    \subfloat{\label{fig:1b}}
+    \includegraphics[width=.4\linewidth]{example-image-a}
+    \hspace{.02\linewidth}
+    \includegraphics[width=.4\linewidth]{example-image-b}
+    \caption{
+        \textbf{\protect\subref*{fig:1a}.}
+        First sub caption.
+        \textbf{\protect\subref*{fig:1b}.}
+        Second sub caption.
+        \kant[8]
+    }
+    \label{fig:1}
+\end{figure}
+
+\kant[1-7]
+
+\end{document}

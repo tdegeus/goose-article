@@ -27,3 +27,9 @@ jobs:
       with:
         working_directory: examples/general-trick_dummy-subfigure
         root_file: example.tex
+    - name: Compile LaTeX example - general-trick_dummy-subfigure-upper
+      uses: dante-ev/latex-action@latest
+      with:
+        working_directory: examples/general-trick_dummy-subfigure-upper
+        root_file: example.tex
+

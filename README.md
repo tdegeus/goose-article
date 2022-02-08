@@ -11,6 +11,7 @@ A customised article class for LaTeX.
 - [Options](#options)
 - [Citations](#citations)
 - [Examples](#examples)
+- [Tips](#tips)
 
 <!-- /MarkdownTOC -->
 
@@ -24,7 +25,7 @@ Download: [.zip file](https://github.com/tdegeus/goose-article/zipball/master) |
 
 # Usage
 
-*goose-article* is a customised class designed for scientific articles. The usage is similar to the default *article* class while the class takes care of formatting. To get started, copy the files from [src/](src/) to to main directory of your project (always copy [goose-article.cls](src/goose-article.cls) and copy to your need [unsrtnat.bst](src/unsrtnat.bst), [unsrtnat_hyperlink.bst](src/unsrtnat_hyperlink.bst), or [apalike.bst](src/apalike.bst)).
+*goose-article* is a customised class designed for scientific articles. The usage is similar to the default *article* class while the class takes care of formatting. To get started, copy the files from [src/](src/) to to main directory of your project (always copy [goose-article.cls](src/goose-article.cls) and copy according to your need [unsrtnat.bst](src/unsrtnat.bst), [unsrtnathyper.bst](src/unsrtnathyper.bst), or [apalike.bst](src/apalike.bst)).
 
 By default, most of the standard LaTeX packages are loaded. Any of these packages can be reloaded without problems (possibly using other options). In addition, the title, the authors and their affiliations, contact information, and optionally a header can be specified.
 
@@ -95,9 +96,23 @@ This results in the following structure:
 
     Use a two-column bibliography.
 
-*   `namecite`
+*   `unsrtnat` (default)
 
-    Use names instead of numbers to cite to references.
+    Use "unsrtnat" as bib style.
+    A custom version is shipped with *goose-article*.
+    It differs from "unsrtnat" in that "arxivid" is supported (see below).
+
+*   `unsrtnathyper`
+
+    Use "unsrtnathyper" as bib style.
+    Similar to `unsrtnat`, with in addition a hyperlink created behind the title (see below).
+
+*   `apalike`
+
+    Use "apalike" as bib style.
+    I.e. use names instead of numbers to cite to references.
+    A custom version is shipped with *goose-article*.
+    It differs from "unsrtnat" in that "arxivid" and "doi" is supported (see below).
 
 *   `showlinks`
 
@@ -111,7 +126,7 @@ This results in the following structure:
 
 Citations and references are handled using [natbib](http://ctan.org/pkg/natbib). In this class, the *unsrtnat* layout is used. Thereby, the extended [unsrtnat.bst](src/unsrtnat.bst) is available that includes output for the `arxivid` field. The *goose-article* class creates commands to convert the `doi` and `arxivid` fields to links (to `doi.org` and `arxiv.org` respectively). Similarly a customised *apalike* style is available ([apalike.bst](src/apalike.bst)).
 
-A little bit more customised is the *unsrtnat_hyperlink* bibliography style, in which the *doi* (or, if missing, the *arxivid* or *url*) are used to create a hyperlink behind the title. The *doi* or *arxivid* are not explicitly shown in citation.
+A little bit more customised is the *unsrtnathyper* bibliography style, in which the *doi* (or, if missing, the *arxivid* or *url*) are used to create a hyperlink behind the title. The *doi* or *arxivid* are not explicitly shown in citation.
 
 Following standard *natbib*, one can use `\cite{...}` or `\citep{...}` for normal citations and `\citet{...}` to include the name. [See also this cheat-sheet](http://merkel.texture.rocks/Latex/natbib.php).
 
@@ -119,5 +134,16 @@ Note that the outputted reference list depends largely on the content of the inc
 
 # Examples
 
-* [Basic example](examples/basic/example.tex)
-* [Two-column example](examples/twocolumn/example.tex)
+*   [Basic example](examples/basic/example.tex),
+    see [PDF](examples/basic/example.pdf).
+
+*   [Two-column example](examples/twocolumn/example.tex),
+    see [PDF](examples/twocolumn/example.pdf).
+
+# Tips
+
+*   [Dummy subfigure label](examples/general-trick_dummy-subfigure/example.tex),
+    see [PDF](examples/general-trick_dummy-subfigure/example.pdf).
+
+*   [Dummy subfigure label, upper-case](examples/general-trick_dummy-subfigure-upper/example.tex),
+    see [PDF](examples/general-trick_dummy-subfigure-upper/example.pdf).
