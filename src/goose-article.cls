@@ -283,39 +283,39 @@
 % {command}{format}{label}{sep}{before-code}{after-code}
 % - section
 \titleformat
-    {\section}
-    {\normalfont\large\bfseries}
-    {\thesection}
-    {1em}
-    {}
-    {}
+{\section}
+{\normalfont\large\bfseries}
+{\thesection}
+{1em}
+{}
+{}
 % - subsection
 \titleformat
-    {\subsection}
-    {\normalfont\normalsize\bfseries}
-    {\thesubsection}
-    {1em}
-    {}
-    {}
+{\subsection}
+{\normalfont\normalsize\bfseries}
+{\thesubsection}
+{1em}
+{}
+{}
 % - paragraph
 \titleformat
-    {\paragraph}
-    {\normalfont\normalsize\bfseries}
-    {}
-    {}
-    {}
-    {}
+{\paragraph}
+{\normalfont\normalsize\bfseries}
+{}
+{}
+{}
+{}
 
 % spacing {left}{top}{bottom}, of:
 % - section
 \titlespacing{\section}
-    {0pt}{1eM}{0.8em}
+{0pt}{1eM}{0.8em}
 % - subsection
 \titlespacing{\subsection}
-    {0pt}{0.8em}{0.4em}
+{0pt}{0.8em}{0.4em}
 % - paragraph
 \titlespacing{\paragraph}
-    {0pt}{0.8em}{0em}
+{0pt}{0.8em}{0em}
 
 % no paragraph indent after header
 \AtBeginDocument{%
@@ -348,16 +348,16 @@
     \null
     \vskip 2em%
     \begin{center}%
-    \let \footnote \thanks
+        \let \footnote \thanks
         {\Large\bfseries \@title \par}%
         \vskip 1.5em%
-        {\normalsize
-            \lineskip .5em%
-            \begin{tabular}[t]{c}%
-                \@author
-            \end{tabular}\par}%
+            {\normalsize
+                \lineskip .5em%
+                \begin{tabular}[t]{c}%
+                    \@author
+                \end{tabular}\par}%
         \vskip 0.5em%
-        {\small \@date}%
+            {\small \@date}%
     \end{center}%
     \par
     \vskip 1.5em

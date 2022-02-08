@@ -88,7 +88,7 @@ This results in the following structure:
     Use left-aligned (in stead of centered) equations.
 
 *   `empty`
-    
+
     Do not use any header (does not even show the page number).
 
 *   `twocolumnbib`
@@ -105,7 +105,7 @@ This results in the following structure:
 
 *   `colorlinks`
 
-    Show links using a blue color. 
+    Show links using a blue color.
 
 # Citations
 
@@ -121,5 +121,3 @@ Note that the outputted reference list depends largely on the content of the inc
 
 * [Basic example](examples/basic/example.tex)
 * [Two-column example](examples/twocolumn/example.tex)
-
-
