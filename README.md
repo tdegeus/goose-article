@@ -1,3 +1,6 @@
+[![ci](https://github.com/tdegeus/GooseSLURM/workflows/ci/badge.svg)](https://github.com/tdegeus/GooseSLURM/actions)
+[![pre-commit](https://github.com/tdegeus/GooseSLURM/workflows/pre-commit/badge.svg)](https://github.com/tdegeus/GooseSLURM/actions)
+
 # goose-article
 
 A customised article class for LaTeX.
