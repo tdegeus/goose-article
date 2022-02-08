@@ -32,4 +32,3 @@ jobs:
       with:
         working_directory: examples/general-trick_dummy-subfigure-upper
         root_file: example.tex
-
