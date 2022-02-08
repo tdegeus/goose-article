@@ -20,12 +20,23 @@
 % Options
 % ==============================================================================
 
-% bibliography [namecite, twocolumnbib]
+% bibliography [apalike, twocolumnbib]
 % -------------------------------------
 
-\newif\if@namecite
-\let\if@namecite\iffalse
-\DeclareOption{namecite}{\let\if@namecite\iftrue}
+\newif\if@styledefined
+\let\if@styledefined\iffalse
+
+\newif\if@apalike
+\let\if@apalike\iffalse
+\DeclareOption{apalike}{\let\if@apalike\iftrue\let\if@styledefined\iftrue}
+
+\newif\if@unsrtnat
+\let\if@unsrtnat\iffalse
+\DeclareOption{unsrtnat}{\let\if@unsrtnat\iftrue\let\if@styledefined\iftrue}
+
+\newif\if@unsrtnathyper
+\let\if@unsrtnathyper\iffalse
+\DeclareOption{unsrtnathyper}{\let\if@unsrtnathyper\iftrue\let\if@styledefined\iftrue}
 
 \newif\if@twocolumnbib
 \let\if@twocolumnbib\iffalse
@@ -147,7 +158,7 @@
 % Citation style
 % ==============================================================================
 
-\if@namecite
+\if@apalike
     \RequirePackage{natbib}
     \let\oldbibliography\bibliography
     \renewcommand{\bibliography}[1]{%
@@ -160,6 +171,39 @@
             \raggedright\oldbibliography{#1}\justifying
         \fi
     }
+\fi
+
+\if@unsrtnat
+    \RequirePackage[square,sort&compress,numbers,comma]{natbib}
+    \let\oldbibliography\bibliography
+    \renewcommand{\bibliography}[1]{%
+        \bibliographystyle{unsrtnat}
+        \setlength{\bibsep}{3pt plus 0.3ex}
+        \def\bibfont{\scriptsize}
+        \if@twocolumnbib
+            \begin{multicols}{2}\raggedright\oldbibliography{#1}\justifying\end{multicols}
+        \else
+            \raggedright\oldbibliography{#1}\justifying
+        \fi
+    }
+\fi
+
+\if@unsrtnathyper
+    \RequirePackage[square,sort&compress,numbers,comma]{natbib}
+    \let\oldbibliography\bibliography
+    \renewcommand{\bibliography}[1]{%
+        \bibliographystyle{unsrtnathyper}
+        \setlength{\bibsep}{3pt plus 0.3ex}
+        \def\bibfont{\scriptsize}
+        \if@twocolumnbib
+            \begin{multicols}{2}\raggedright\oldbibliography{#1}\justifying\end{multicols}
+        \else
+            \raggedright\oldbibliography{#1}\justifying
+        \fi
+    }
+\fi
+
+\if@styledefined
 \else
     \RequirePackage[square,sort&compress,numbers,comma]{natbib}
     \let\oldbibliography\bibliography
