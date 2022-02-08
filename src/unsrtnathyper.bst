@@ -286,9 +286,24 @@ FUNCTION {format.issn}
 FUNCTION {format.url}
 { url empty$
     { "" }
-    { new.block "URL \url{" url * "}" * }
+    { "" }
   if$
 }
+
+FUNCTION {format.doi}
+{ doi empty$
+    { "" }
+    { "" }
+  if$
+}
+
+FUNCTION {format.arxivid}
+{ arxivid empty$
+    { "" }
+    { "" }
+  if$
+}
+
 
 FUNCTION {doilink}
 { duplicate$ empty$
