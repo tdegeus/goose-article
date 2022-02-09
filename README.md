@@ -20,17 +20,34 @@ A customised article class for LaTeX.
 
 # Disclaimer
 
-This library is free to use. Any additions are very much appreciated, in terms of suggested functionality, code, documentation, testimonials, word-of-mouth advertisement, etc. Bug reports or feature requests can be filed on [GitHub](https://github.com/tdegeus/goose-article). As always, the code comes with no guarantee. None of the developers can be held responsible for possible mistakes.
+This library is free to use.
+Any additions are very much appreciated, in terms of suggested functionality,
+code, documentation, testimonials, word-of-mouth advertisement, etc.
+Bug reports or feature requests can be filed on [GitHub](https://github.com/tdegeus/goose-article).
+As always, the code comes with no guarantee.
+None of the developers can be held responsible for possible mistakes.
 
-Download: [.zip file](https://github.com/tdegeus/goose-article/zipball/master) | [.tar.gz file](https://github.com/tdegeus/goose-article/tarball/master).
+Download:
+[.zip file](https://github.com/tdegeus/goose-article/zipball/master) |
+[.tar.gz file](https://github.com/tdegeus/goose-article/tarball/master).
 
-(c - [MIT](https://github.com/tdegeus/goose-article/blob/master/LICENSE)) T.W.J. de Geus (Tom) | tom@geus.me | www.geus.me | [github.com/tdegeus/goose-article](https://github.com/tdegeus/goose-article)
+(c - [MIT](https://github.com/tdegeus/goose-article/blob/master/LICENSE)) T.W.J. de Geus (Tom) |
+tom@geus.me | www.geus.me |
+[github.com/tdegeus/goose-article](https://github.com/tdegeus/goose-article)
 
 # Usage
 
-*goose-article* is a customised class designed for scientific articles. The usage is similar to the default *article* class while the class takes care of formatting. To get started, copy the files from [src/](src/) to to main directory of your project (always copy [goose-article.cls](src/goose-article.cls) and copy according to your need [unsrtnat.bst](src/unsrtnat.bst), [unsrtnathyper.bst](src/unsrtnathyper.bst), or [apalike.bst](src/apalike.bst)).
+*goose-article* is a customised class designed for scientific articles.
+The usage is similar to the default *article* class while the class takes care of formatting.
+To get started, copy the files from [src/](src/) to to main directory of your project
+(always copy [goose-article.cls](src/goose-article.cls) and copy according to your need
+[unsrtnat.bst](src/unsrtnat.bst), [unsrtnat_hyperlink.bst](src/unsrtnat_hyperlink.bst),
+or [apalike.bst](src/apalike.bst)).
 
-By default, most of the standard LaTeX packages are loaded. Any of these packages can be reloaded without problems (possibly using other options). In addition, the title, the authors and their affiliations, contact information, and optionally a header can be specified.
+By default, most of the standard LaTeX packages are loaded.
+Any of these packages can be reloaded without problems (possibly using other options).
+In addition, the title, the authors and their affiliations, contact information,
+and optionally a header can be specified.
 
 This results in the following structure:
 
@@ -70,6 +87,10 @@ This results in the following structure:
 
 ...
 
+% If you have references in "myrefs.bib"
+\bibliographystyle{unsrtnat}
+\bibliography{myrefs}
+
 \end{document}
 ```
 
@@ -77,7 +98,10 @@ This results in the following structure:
 
 *   `garamond`, `times`, `verdana`
 
-    Choose a font. The default computer-modern font is used if no font is specified. If you select one of these fonts, switch in compilation from using `pdflatex` to `xelatex`. XeLaTeX is similar to `pdflatex` but it allows for the usage of TrueType-fonts.
+    Choose a font.
+    The default computer-modern font is used if no font is specified.
+    If you select one of these fonts, switch in compilation from using `pdflatex` to `xelatex`.
+    XeLaTeX is similar to `pdflatex` but it allows for the usage of TrueType-fonts.
 
 *   `narrow`, `wide`, `wwide`
 
@@ -99,23 +123,10 @@ This results in the following structure:
 
     Use a two-column bibliography.
 
-*   `unsrtnat` (default)
+*   `namecite`
 
-    Use "unsrtnat" as bib style.
-    A custom version is shipped with *goose-article*.
-    It differs from "unsrtnat" in that "arxivid" is supported (see below).
-
-*   `unsrtnathyper`
-
-    Use "unsrtnathyper" as bib style.
-    Similar to `unsrtnat`, with in addition a hyperlink created behind the title (see below).
-
-*   `apalike`
-
-    Use "apalike" as bib style.
-    I.e. use names instead of numbers to cite to references.
-    A custom version is shipped with *goose-article*.
-    It differs from "unsrtnat" in that "arxivid" and "doi" is supported (see below).
+    Use name-citations instead of numbers.
+    Often combined with `\bibliographystyle{apalike}` (see below).
 
 *   `showlinks`
 
@@ -127,17 +138,31 @@ This results in the following structure:
 
 # Citations
 
-Citations and references are handled using [natbib](http://ctan.org/pkg/natbib). In this class, the *unsrtnat* layout is used. Thereby, the extended [unsrtnat.bst](src/unsrtnat.bst) is available that includes output for the `arxivid` field. The *goose-article* class creates commands to convert the `doi` and `arxivid` fields to links (to `doi.org` and `arxiv.org` respectively). Similarly a customised *apalike* style is available ([apalike.bst](src/apalike.bst)).
+Citations and references are handled using [natbib](http://ctan.org/pkg/natbib).
+You can select your `\bibliographystyle{...}` of preference before calling `\bibliography{...}`.
+An extended [unsrtnat.bst](src/unsrtnat.bst) is available that includes output
+for the `arxivid` field.
+Similarly a customised *apalike* style is available ([apalike.bst](src/apalike.bst)).
 
-A little bit more customised is the *unsrtnathyper* bibliography style, in which the *doi* (or, if missing, the *arxivid* or *url*) are used to create a hyperlink behind the title. The *doi* or *arxivid* are not explicitly shown in citation.
+A little bit more customised is the *unsrtnat_hyperlink* bibliography style,
+in which the *doi* (or, if missing, the *arxivid* or *url*) are used
+to create a hyperlink behind the title.
+The *doi* or *arxivid* are not explicitly shown in citation.
 
-Following standard *natbib*, one can use `\cite{...}` or `\citep{...}` for normal citations and `\citet{...}` to include the name. [See also this cheat-sheet](http://merkel.texture.rocks/Latex/natbib.php).
+Following standard *natbib*, one can use `\cite{...}` or `\citep{...}`
+for normal citations and `\citet{...}` to include the name.
+[See also this cheat-sheet](http://merkel.texture.rocks/Latex/natbib.php).
 
-Note that the outputted reference list depends largely on the content of the included `bib`-file. A simple command-line tool, [GooseBib](https://github.com/tdegeus/GooseBib), is available to clean up arbitrary `bib`-files.
+Note that the outputted reference list depends largely on the content of the included `bib`-file.
+A simple command-line tool, [GooseBib](https://github.com/tdegeus/GooseBib),
+is available to clean up arbitrary `bib`-files.
 
 # Examples
 
 *   [Basic example](examples/basic/example.tex),
+    see [PDF](examples/basic/example.pdf).
+
+*   [Basic example with `namecite`](examples/namecite/example.tex),
     see [PDF](examples/basic/example.pdf).
 
 *   [Two-column example](examples/twocolumn/example.tex),
