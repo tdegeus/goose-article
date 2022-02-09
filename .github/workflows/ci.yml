@@ -17,6 +17,11 @@ jobs:
       with:
         working_directory: examples/basic
         root_file: example.tex
+    - name: Compile LaTeX example - namecite
+      uses: dante-ev/latex-action@latest
+      with:
+        working_directory: examples/namecite
+        root_file: example.tex
     - name: Compile LaTeX example - twocolumn
       uses: dante-ev/latex-action@latest
       with:
