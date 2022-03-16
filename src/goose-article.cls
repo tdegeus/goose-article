@@ -14,13 +14,13 @@
 % ==============================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{goose-article}[2021/11/03 v0.7.0 customized article class]
+\ProvidesClass{goose-article}[2022/02/01 v0.9.0 customized article class]
 
 % ==============================================================================
 % Options
 % ==============================================================================
 
-% bibliography [apalike, twocolumnbib]
+% Bibliography [namecite, twocolumnbib]
 % -------------------------------------
 
 \newif\if@namecite
@@ -82,8 +82,8 @@
 \let\if@verdana\iffalse
 \DeclareOption{verdana}{\let\if@verdana\iftrue\let\if@font\iftrue}
 
-% Hyperref [showlinks]
-% --------------------
+% Hyperref [showlinks, colorlinks]
+% --------------------------------
 
 \newif\if@showlinks
 \let\if@showlinks\iffalse
@@ -151,7 +151,6 @@
     \RequirePackage{natbib}
     \let\oldbibliography\bibliography
     \renewcommand{\bibliography}[1]{%
-
         \setlength{\bibsep}{3pt plus 0.3ex}
         \def\bibfont{\scriptsize}
         \if@twocolumnbib
