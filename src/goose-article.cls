@@ -96,6 +96,8 @@
 % Process options
 % ---------------
 
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+
 \ProcessOptions\relax
 
 % ==============================================================================
