@@ -96,6 +96,8 @@ This results in the following structure:
 
 # Options
 
+*   Any option for the `article` class, such as `12pt`, `fleqn`, etc.
+
 *   `garamond`, `times`, `verdana`
 
     Choose a font.
@@ -110,10 +112,6 @@ This results in the following structure:
 *   `doublespacing`
 
     Set the line spacing to double, useful during the review process.
-
-*   `fleqn`
-
-    Use left-aligned (in stead of centered) equations.
 
 *   `empty`
 

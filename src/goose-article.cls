@@ -1,8 +1,8 @@
 % ------------------------------------------------------------------------------
 %  @LaTeX-class-file{
 %     filename        = "goose-article.cls",
-%     version         = "0.9.0",
-%     date            = "February 2022",
+%     version         = "0.10.0",
+%     date            = "April 2022",
 %     codetable       = "ISO/ASCII",
 %     keywords        = "LaTeX, goose-article",
 %     supported       = "https://github.com/tdegeus/goose-article",
@@ -14,7 +14,7 @@
 % ==============================================================================
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{goose-article}[2022/02/01 v0.9.0 customized article class]
+\ProvidesClass{goose-article}[2022/04/06 v0.10.0 customized article class]
 
 % ==============================================================================
 % Options
