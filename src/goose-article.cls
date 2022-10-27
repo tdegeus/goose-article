@@ -142,6 +142,7 @@
 \RequirePackage{authblk}
 \RequirePackage{ragged2e}
 \RequirePackage{multicol}
+\RequirePackage{uri}  % https://github.com/retorquere/zotero-better-bibtex/issues/1336
 \RequirePackage{hyperref}
 \RequirePackage[capitalise]{cleveref}
 
