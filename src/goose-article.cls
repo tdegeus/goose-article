@@ -176,9 +176,8 @@
     }
 \fi
 
-% define DOI command
-\newcommand*{\doi}[1]{\sloppy\href{http://dx.doi.org/#1}{doi:~#1}}
-\newcommand*{\arxivid}[1]{\sloppy\href{http://arxiv.org/abs/#1}{arXiv:~#1}}
+\renewcommand*{\doi}[1]{\sloppy\href{https://dx.doi.org/#1}{doi:~#1}}
+\newcommand*{\arxivid}[1]{\sloppy\href{https://arxiv.org/abs/#1}{arXiv:~#1}}
 
 % ==============================================================================
 % Font
