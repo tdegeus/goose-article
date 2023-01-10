@@ -284,11 +284,13 @@
 % \titleformat{command}[shape]{format}{label}{sep}{before}[after]
 \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}{}
 \titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}{}
 \titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{}{}{}[.]
 
 % spacing {left}{top}{bottom}, of:
 \titlespacing{\section}{0pt}{1eM}{0.8em}
 \titlespacing{\subsection}{0pt}{0.8em}{0.4em}
+\titlespacing{\subsubsection}{0pt}{0.8em}{0.4em}
 \titlespacing{\paragraph}{0pt}{0.8em}{1em}
 
 % no paragraph indent after header
