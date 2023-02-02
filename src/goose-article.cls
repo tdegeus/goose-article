@@ -1,8 +1,8 @@
 % ------------------------------------------------------------------------------
 %  @LaTeX-class-file{
 %     filename        = "goose-article.cls",
-%     version         = "0.10.0",
-%     date            = "April 2022",
+%     version         = "0.10.1",
+%     date            = "February 2023",
 %     codetable       = "ISO/ASCII",
 %     keywords        = "LaTeX, goose-article",
 %     supported       = "https://github.com/tdegeus/goose-article",
@@ -176,7 +176,24 @@
     }
 \fi
 
-\renewcommand*{\doi}[1]{\sloppy\href{https://dx.doi.org/#1}{doi:~#1}}
+% escape underscopes (in DOI): https://stackoverflow.com/a/57028315/2646505
+\newcommand{\replunderscores}[1]{\expandafter\@repl@underscores#1_\relax}
+
+\def\@repl@underscores#1_#2\relax{%
+    \ifx \relax #2\relax
+        % #2 is empty => finish
+        #1%
+    \else
+        % #2 is not empty => underscore was contained, needs to be replaced
+        #1%
+        \textunderscore
+        % continue replacing
+        % #2 ends with an extra underscore so I don't need to add another one
+        \@repl@underscores#2\relax
+    \fi
+}
+
+\renewcommand*{\doi}[1]{\sloppy\href{https://dx.doi.org/#1}{doi:~\replunderscores{#1}}}
 \newcommand*{\arxivid}[1]{\sloppy\href{https://arxiv.org/abs/#1}{arXiv:~#1}}
 
 % ==============================================================================
