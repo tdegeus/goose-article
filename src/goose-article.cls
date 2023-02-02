@@ -57,6 +57,13 @@
 \let\if@empty\iffalse
 \DeclareOption{empty}{\let\if@empty\iftrue}
 
+% Pargraph [plainparagraph]
+% -------------------------
+
+\newif\if@plainparagraph
+\let\if@plainparagraph\iffalse
+\DeclareOption{plainparagraph}{\let\if@plainparagraph\iftrue}
+
 % Math [fleqn]
 % ------------
 
@@ -302,7 +309,11 @@
 \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}{}
 \titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}{}
 \titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}{}
-\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{}{}{}[.]
+\if@plainparagraph
+    \titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{}{}{}
+\else
+    \titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{}{}{}[.]
+\fi
 
 % spacing {left}{top}{bottom}, of:
 \titlespacing{\section}{0pt}{1eM}{0.8em}

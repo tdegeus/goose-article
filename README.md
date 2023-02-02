@@ -117,6 +117,10 @@ This results in the following structure:
 
     Do not use any header (does not even show the page number).
 
+*   `plainparagraph`
+
+    Do not append a period to `\paragraph`.
+
 *   `twocolumnbib`
 
     Use a two-column bibliography.
