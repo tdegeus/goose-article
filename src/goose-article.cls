@@ -194,7 +194,7 @@
 }
 
 \renewcommand*{\doi}[1]{\sloppy\href{https://dx.doi.org/#1}{doi:~\replunderscores{#1}}}
-\newcommand*{\arxivid}[1]{\sloppy\href{https://arxiv.org/abs/#1}{arXiv:~#1}}
+\newcommand*{\arxivid}[1]{\sloppy\href{https://arxiv.org/abs/#1}{arXiv:~\replunderscores{#1}}}
 
 % ==============================================================================
 % Font
