@@ -149,7 +149,7 @@
 \RequirePackage{authblk}
 \RequirePackage{ragged2e}
 \RequirePackage{multicol}
-\RequirePackage{uri}  % https://github.com/retorquere/zotero-better-bibtex/issues/1336
+\RequirePackage{uri} % https://github.com/retorquere/zotero-better-bibtex/issues/1336
 \RequirePackage{hyperref}
 \RequirePackage[capitalise]{cleveref}
 
@@ -164,7 +164,9 @@
         \setlength{\bibsep}{3pt plus 0.3ex}
         \def\bibfont{\scriptsize}
         \if@twocolumnbib
-            \begin{multicols}{2}\raggedright\oldbibliography{#1}\justifying\end{multicols}
+            \begin{multicols}{2}
+                \raggedright\oldbibliography{#1}\justifying
+            \end{multicols}
         \else
             \raggedright\oldbibliography{#1}\justifying
         \fi
@@ -176,7 +178,9 @@
         \setlength{\bibsep}{3pt plus 0.3ex}
         \def\bibfont{\scriptsize}
         \if@twocolumnbib
-            \begin{multicols}{2}\raggedright\oldbibliography{#1}\justifying\end{multicols}
+            \begin{multicols}{2}
+                \raggedright\oldbibliography{#1}\justifying
+            \end{multicols}
         \else
             \raggedright\oldbibliography{#1}\justifying
         \fi
@@ -187,7 +191,8 @@
 \newcommand{\replunderscores}[1]{\expandafter\@repl@underscores#1_\relax}
 
 \def\@repl@underscores#1_#2\relax{%
-    \ifx \relax #2\relax
+    \ifx
+        \relax #2\relax
         % #2 is empty => finish
         #1%
     \else
@@ -327,7 +332,8 @@
     \let\orig@afterheading\@afterheading
     \def\@afterheading{%
         \@afterindentfalse
-        \orig@afterheading}
+        \orig@afterheading
+    }
     \makeatother
 }
 
@@ -355,13 +361,16 @@
         \let \footnote \thanks
         {\Large\bfseries \@title \par}%
         \vskip 1.5em%
-            {\normalsize
-                \lineskip .5em%
-                \begin{tabular}[t]{c}%
-                    \@author
-                \end{tabular}\par}%
+        {
+            \normalsize
+            \lineskip .5em%
+            \begin{tabular}[t]{c}%
+                \@author
+            \end{tabular}
+            \par
+        }%
         \vskip 0.5em%
-            {\small \@date}%
+        {\small \@date}%
     \end{center}%
     \par
     \vskip 1.5em
