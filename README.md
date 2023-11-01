@@ -121,9 +121,17 @@ This results in the following structure:
 
     Do not append a period to `\paragraph`.
 
+*   `displayparagraph`
+
+    Show paragraph titles in the text (instead of inline).
+
 *   `twocolumnbib`
 
     Use a two-column bibliography.
+
+*   `normalsizebib`
+
+    Bibliography in normal font size (instead of `\scriptsize`).
 
 *   `namecite`
 
