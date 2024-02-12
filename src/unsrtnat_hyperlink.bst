@@ -52,6 +52,8 @@ ENTRY
     doi
     arxivid
     eid
+    eprint
+    archiveprefix
     edition
     editor
     howpublished
@@ -304,6 +306,12 @@ FUNCTION {format.arxivid}
   if$
 }
 
+FUNCTION {format.eprint}
+{ eprint empty$
+    { "" }
+    { "" }
+  if$
+}
 
 FUNCTION {doilink}
 { duplicate$ empty$
@@ -750,6 +758,7 @@ FUNCTION {article}
   format.issn output
   format.doi output
   format.arxivid output
+  format.eprint output
   format.url output
   new.block
   note output
