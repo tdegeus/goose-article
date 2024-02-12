@@ -13,11 +13,8 @@
 % Basic settings
 % ==============================================================================
 
-\NeedsTeXFormat{LaTeX2e}
+\NeedsTeXFormat{LaTeX2e}[2022-06-01]
 \ProvidesClass{goose-article}[2023/11/01 v0.11.0 customized article class]
-
-\RequirePackage{kvoptions}
-\SetupKeyvalOptions{family=myoptions,prefix=myoptions@}
 
 % ==============================================================================
 % Options
@@ -107,7 +104,16 @@
 \let\if@colorlinks\iffalse
 \DeclareOption{colorlinks}{\let\if@colorlinks\iftrue}
 
-\DeclareStringOption[scriptsize]{bibsize}
+\DeclareKeys{
+    bibsize.store = \bibsize,
+    bibsize.usage = load
+}
+
+\SetKeys{
+    bibsize = scriptsize
+}
+
+\ProcessKeyOptions
 
 % Process options
 % ---------------
@@ -180,7 +186,7 @@
 \let\oldbibliography\bibliography
 \renewcommand{\bibliography}[1]{%
     \setlength{\bibsep}{3pt plus 0.3ex}
-    \def\bibfont{\csname \myoptions@bibsize\endcsname}
+    \def\bibfont{\csname \bibsize\endcsname}
     \if@twocolumnbib
         \begin{multicols}{2}
             \raggedright\oldbibliography{#1}\justifying
