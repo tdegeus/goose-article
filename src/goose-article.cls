@@ -111,19 +111,23 @@
 % Process options
 % ---------------
 
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\DeclareOption{openright}{\OptionNotUsed}
+\DeclareOption{openany}{\OptionNotUsed}
 
+\PassOptionsToClass{a4paper}{article}
+\PassOptionsToClass{twoside}{article}
+\if@fleqn
+    \PassOptionsToClass{fleqn}{article}
+\fi
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
+
+\LoadClass{article}
 
 % ==============================================================================
 % Packages
 % ==============================================================================
-
-\if@fleqn
-    \LoadClass[a4paper, fleqn, twoside]{article}
-\else
-    \LoadClass[a4paper, twoside]{article}
-\fi
 
 \if@narrow
     \RequirePackage[left=40mm, right=40mm, top=30mm, bottom=30mm]{geometry}
