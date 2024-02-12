@@ -1,1 +1,0 @@
-../../src/unsrtnat_hyperlink.bst
