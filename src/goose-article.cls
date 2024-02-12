@@ -16,6 +16,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{goose-article}[2023/11/01 v0.11.0 customized article class]
 
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{family=myoptions,prefix=myoptions@}
+
 % ==============================================================================
 % Options
 % ==============================================================================
@@ -30,10 +33,6 @@
 \newif\if@twocolumnbib
 \let\if@twocolumnbib\iffalse
 \DeclareOption{twocolumnbib}{\let\if@twocolumnbib\iftrue}
-
-\newif\if@normalsizebib
-\let\if@normalsizebib\iffalse
-\DeclareOption{normalsizebib}{\let\if@normalsizebib\iftrue}
 
 % Layout [narrow, wide, wwide, doublespacing]
 % -------------------------------------------
@@ -108,6 +107,8 @@
 \let\if@colorlinks\iffalse
 \DeclareOption{colorlinks}{\let\if@colorlinks\iftrue}
 
+\DeclareStringOption[scriptsize]{bibsize}
+
 % Process options
 % ---------------
 
@@ -124,6 +125,7 @@
 \ProcessOptions\relax
 
 \LoadClass{article}
+\let\@unusedoptionlist\@empty
 
 % ==============================================================================
 % Packages
@@ -178,11 +180,7 @@
 \let\oldbibliography\bibliography
 \renewcommand{\bibliography}[1]{%
     \setlength{\bibsep}{3pt plus 0.3ex}
-    \if@normalsizebib
-        \def\bibfont{\normalsize}
-    \else
-        \def\bibfont{\scriptsize}
-    \fi
+    \def\bibfont{\csname \myoptions@bibsize\endcsname}
     \if@twocolumnbib
         \begin{multicols}{2}
             \raggedright\oldbibliography{#1}\justifying
