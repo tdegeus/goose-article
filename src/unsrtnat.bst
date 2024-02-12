@@ -52,6 +52,8 @@ ENTRY
     doi
     arxivid
     eid
+    eprint
+    archiveprefix
     edition
     editor
     howpublished
@@ -300,7 +302,26 @@ FUNCTION {format.doi}
 FUNCTION {format.arxivid}
 { arxivid empty$
     { "" }
-    { new.block "\arxivid{" arxivid * "}" * }
+    { eprint empty$
+        { new.block "\arxivid{" arxivid * "}" * }
+        { "arxiv" archiveprefix "l" change.case$ =
+          { "" }
+          { new.block "\arxivid{" arxivid * "}" * }
+          if$
+        }
+      if$
+    }
+  if$
+}
+
+FUNCTION {format.eprint}
+{ eprint empty$
+    { "" }
+    { "arxiv" archiveprefix "l" change.case$ =
+      { new.block "\arxivid{" eprint * "}" * }
+      { "" }
+      if$
+    }
   if$
 }
 
@@ -729,6 +750,7 @@ FUNCTION {article}
   format.issn output
   format.doi output
   format.arxivid output
+  format.eprint output
   format.url output
   new.block
   note output
