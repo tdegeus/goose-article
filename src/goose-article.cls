@@ -171,41 +171,26 @@
 
 \if@namecite
     \RequirePackage{natbib}
-    \let\oldbibliography\bibliography
-    \renewcommand{\bibliography}[1]{%
-        \setlength{\bibsep}{3pt plus 0.3ex}
-        \if@normalsizebib
-            \def\bibfont{\normalsize}
-        \else
-            \def\bibfont{\scriptsize}
-        \fi
-        \if@twocolumnbib
-            \begin{multicols}{2}
-                \raggedright\oldbibliography{#1}\justifying
-            \end{multicols}
-        \else
-            \raggedright\oldbibliography{#1}\justifying
-        \fi
-    }
 \else
     \RequirePackage[square,sort&compress,numbers,comma]{natbib}
-    \let\oldbibliography\bibliography
-    \renewcommand{\bibliography}[1]{%
-        \setlength{\bibsep}{3pt plus 0.3ex}
-        \if@normalsizebib
-            \def\bibfont{\normalsize}
-        \else
-            \def\bibfont{\scriptsize}
-        \fi
-        \if@twocolumnbib
-            \begin{multicols}{2}
-                \raggedright\oldbibliography{#1}\justifying
-            \end{multicols}
-        \else
-            \raggedright\oldbibliography{#1}\justifying
-        \fi
-    }
 \fi
+
+\let\oldbibliography\bibliography
+\renewcommand{\bibliography}[1]{%
+    \setlength{\bibsep}{3pt plus 0.3ex}
+    \if@normalsizebib
+        \def\bibfont{\normalsize}
+    \else
+        \def\bibfont{\scriptsize}
+    \fi
+    \if@twocolumnbib
+        \begin{multicols}{2}
+            \raggedright\oldbibliography{#1}\justifying
+        \end{multicols}
+    \else
+        \raggedright\oldbibliography{#1}\justifying
+    \fi
+}
 
 % escape underscopes (in DOI): https://stackoverflow.com/a/57028315/2646505
 \newcommand{\replunderscores}[1]{\expandafter\@repl@underscores#1_\relax}
