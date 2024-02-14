@@ -1,7 +1,7 @@
 % ------------------------------------------------------------------------------
 %  @LaTeX-class-file{
 %     filename        = "goose-article.cls",
-%     version         = "1.10.0",
+%     version         = "1.0.0",
 %     date            = "Frebuary 2024",
 %     codetable       = "ISO/ASCII",
 %     keywords        = "LaTeX, goose-article",
@@ -14,7 +14,7 @@
 % ==============================================================================
 
 \NeedsTeXFormat{LaTeX2e}[2022-06-01]
-\ProvidesClass{goose-article}[2024/02/14 v1.00.0 customized article class]
+\ProvidesClass{goose-article}[2024/02/14 v1.0.0 customized article class]
 
 % ==============================================================================
 % Options
