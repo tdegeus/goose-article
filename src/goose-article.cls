@@ -36,32 +36,32 @@
 \let\if@fleqn\iffalse
 \DeclareOption{fleqn}{\let\if@fleqn\iftrue}
 
-\DeclareKeys{
-    bibpackage.store = \bibpackage,
+\DeclareKeys[myopts]{
+    bibpackage.store = \@myopts@bibpackage,
     bibpackage.usage = load,
-    bibsize.store = \bibsize,
+    bibsize.store = \@myopts@bibsize,
     bibsize.usage = load,
-    bibcols.store = \bibcols,
+    bibcols.store = \@myopts@bibcols,
     bibcols.usage = load,
-    left.store = \left,
+    left.store = \@myopts@left,
     left.usage = load,
-    right.store = \right,
+    right.store = \@myopts@right,
     right.usage = load,
-    top.store = \top,
+    top.store = \@myopts@top,
     top.usage = load,
-    bottom.store = \bottom,
+    bottom.store = \@myopts@bottom,
     bottom.usage = load,
-    paragraphshape.store = \paragraphshape,
+    paragraphshape.store = \@myopts@paragraphshape,
     paragraphshape.usage = load,
-    paragraphafter.store = \paragraphafter,
+    paragraphafter.store = \@myopts@paragraphafter,
     paragraphafter.usage = load,
-    font.store = \fontname,
+    font.store = \@myopts@fontname,
     font.usage = load,
-    pagenumbers.if = @pagenumbers,
+    pagenumbers.if = @myopts@@pagenumbers,
     pagenumbers.usage = load,
 }
 
-\SetKeys{
+\SetKeys[myopts]{
     bibpackage = natbib,
     bibsize = scriptsize,
     bibcols = 1,
@@ -75,7 +75,7 @@
     pagenumbers = true,
 }
 
-\ProcessKeyOptions
+\ProcessKeyOptions[myopts]
 
 \DeclareOption{openright}{\OptionNotUsed}
 \DeclareOption{openany}{\OptionNotUsed}
@@ -97,10 +97,10 @@
 % ==============================================================================
 
 \RequirePackage[
-    left = \left,
-    right = \right,
-    top = \top,
-    bottom = \bottom,
+    left = \@myopts@left,
+    right = \@myopts@right,
+    top = \@myopts@top,
+    bottom = \@myopts@bottom,
 ]{geometry}
 
 \RequirePackage{ifthen}
@@ -130,30 +130,35 @@
 % Bibliography
 % ==============================================================================
 
-\ifthenelse{\equal{\bibpackage}{natbib}}{
+\ifthenelse{\equal{\@myopts@bibpackage}{natbib}}{
     \RequirePackage[square,sort&compress,numbers,comma]{natbib}
 
     \let\oldbibliography\bibliography
     \renewcommand{\bibliography}[1]{%
         \setlength{\bibsep}{3pt plus 0.3ex}
-        \def\bibfont{\csname \bibsize\endcsname}
-        \ifthenelse{\equal{\bibcols}{1}}{
+        \def\bibfont{\csname \@myopts@bibsize\endcsname}
+        \ifthenelse{\equal{\@myopts@bibcols}{1}}{
             \raggedright\oldbibliography{#1}\justifying
         }{
-            \begin{multicols}{\bibcols}
+            \begin{multicols}{\@myopts@bibcols}
                 \raggedright\oldbibliography{#1}\justifying
             \end{multicols}
         }
     }
 }{
-    \ifthenelse{\equal{\bibpackage}{biblatex}}{
+    \ifthenelse{\equal{\@myopts@bibpackage}{biblatex}}{
         \RequirePackage[sortcites,backend=bibtex,style=numeric-comp,sorting=none]{biblatex}
-        \AtBeginBibliography{\csname \bibsize\endcsname}
-    }{
-        \ifthenelse{\equal{\bibpackage}{none}}{
-            %
+        \AtBeginBibliography{\csname \@myopts@bibsize\endcsname}
+        \ifthenelse{\equal{\@myopts@bibcols}{1}}{
+            % one column -> do nothing
         }{
-            \ClassError{goose-article}{Unknown option 'bibpackage=\bibpackage'}{}
+            \ClassError{goose-article}{'bibpackage=biblatex': 'bibcols=\@myopts@bibcols' not allowed}{}
+        }
+    }{
+        \ifthenelse{\equal{\@myopts@bibpackage}{none}}{
+            % no bibliography backend -> do nothing
+        }{
+            \ClassError{goose-article}{Unknown option 'bibpackage=\@myopts@bibpackage'}{}
         }
     }
 }
@@ -162,14 +167,14 @@
 % Font
 % ==============================================================================
 
-\ifthenelse{\equal{\fontname}{default}}{
+\ifthenelse{\equal{\@myopts@fontname}{default}}{
     % default
 }
 {
     \RequirePackage{mathspec}
     \RequirePackage{fontspec}
 
-    \ifthenelse{\equal{\fontname}{garamond}}{
+    \ifthenelse{\equal{\@myopts@fontname}{garamond}}{
         \AtBeginDocument{%
             \setmathfont(Digits)[Numbers=OldStyle]{Garamond}%
             \setromanfont[%
@@ -182,7 +187,7 @@
         % other font
     }
 
-    \ifthenelse{\equal{\fontname}{verdana}}{
+    \ifthenelse{\equal{\@myopts@fontname}{verdana}}{
         \AtBeginDocument{%
             \defaultfontfeatures{Mapping=tex-text}
             \setmainfont[Mapping=tex-text]{Verdana}
@@ -195,7 +200,7 @@
         % other font
     }
 
-    \ifthenelse{\equal{\fontname}{times}}{
+    \ifthenelse{\equal{\@myopts@fontname}{times}}{
         \AtBeginDocument{%
             \setmathfont(Digits)[Numbers=OldStyle]{Times New Roman}%
             \setromanfont[%
@@ -251,10 +256,10 @@
 \titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}{}
 \titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}{}
 
-\ifthenelse{\equal{\paragraphafter}{none}}{
-    \titleformat{\paragraph}[\paragraphshape]{\normalfont\normalsize\bfseries}{}{}{}
+\ifthenelse{\equal{\@myopts@paragraphafter}{none}}{
+    \titleformat{\paragraph}[\@myopts@paragraphshape]{\normalfont\normalsize\bfseries}{}{}{}
 }{
-    \titleformat{\paragraph}[\paragraphshape]{\normalfont\normalsize\bfseries}{}{}{}[\paragraphafter]
+    \titleformat{\paragraph}[\@myopts@paragraphshape]{\normalfont\normalsize\bfseries}{}{}{}[\@myopts@paragraphafter]
 }
 
 % spacing {left}{top}{bottom}, of:
@@ -329,7 +334,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-\if@pagenumbers
+\if@myopts@@pagenumbers
     \fancyhead[RO,LE]{\thepage}
 \fi
 
