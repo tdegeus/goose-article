@@ -7,16 +7,18 @@ A customised article class for LaTeX.
 
 # Contents
 
-<!-- MarkdownTOC -->
+*   [Usage](#usage)
+*   [Options](#options)
 
-- [Disclaimer](#disclaimer)
-- [Usage](#usage)
-- [Options](#options)
-- [Citations](#citations)
-- [Examples](#examples)
-- [Tips](#tips)
+    * [article class options](#articleclassoptions)
+    * [font](#font)
+    * [layout](#layout)
+    * [bibliography](#bibliography)
+    * [headers](#headers)
 
-<!-- /MarkdownTOC -->
+*   [Natbib: doi and arXiv](#natbib)
+*   [Examples](#examples)
+*   [Tips](#tips)
 
 # Disclaimer
 
@@ -27,27 +29,18 @@ Bug reports or feature requests can be filed on [GitHub](https://github.com/tdeg
 As always, the code comes with no guarantee.
 None of the developers can be held responsible for possible mistakes.
 
-Download:
-[.zip file](https://github.com/tdegeus/goose-article/zipball/master) |
-[.tar.gz file](https://github.com/tdegeus/goose-article/tarball/master).
-
-(c - [MIT](https://github.com/tdegeus/goose-article/blob/master/LICENSE)) T.W.J. de Geus (Tom) |
-tom@geus.me | www.geus.me |
-[github.com/tdegeus/goose-article](https://github.com/tdegeus/goose-article)
-
-# Usage
+# <a name='usage'></a>Usage
 
 *goose-article* is a customised class designed for scientific articles.
-The usage is similar to the default *article* class while the class takes care of formatting.
-To get started, copy the files from [src/](src/) to to main directory of your project
-(always copy [goose-article.cls](src/goose-article.cls) and copy according to your need
-[unsrtnat.bst](src/unsrtnat.bst), [unsrtnat_hyperlink.bst](src/unsrtnat_hyperlink.bst),
-or [apalike.bst](src/apalike.bst)).
+The class is based on the default *article* class, but with some additional formatting and options.
+Usage:
+
+*   Copy [goose-article.cls](src/goose-article.cls) (from [src/](src/)) to to main directory of your project.
+*   Optionally, copy [unsrtnat.bst](src/unsrtnat.bst) that includes `doi` links and a arXiv-id if present.
 
 By default, most of the standard LaTeX packages are loaded.
 Any of these packages can be reloaded without problems (possibly using other options).
-In addition, the title, the authors and their affiliations, contact information,
-and optionally a header can be specified.
+In addition, the title, the authors and their affiliations, and optionally a header can be specified.
 
 This results in the following structure:
 
@@ -66,13 +59,10 @@ This results in the following structure:
 \affil[1]{...}
 \affil[2]{...}
 
-% The contact information.
-\contact{...} % E.g. "\href{mailto:tom@geus.me}{tom@geus.me}"
-
-% The author to put in the PDF information.
+% Suggestion: set the proper author in the PDF information.
 \hypersetup{pdfauthor={...}}
 
-% Text to put in the header. The page number is always used.
+% Optional: add a page-header.
 \header{...}
 
 % =============================
@@ -87,98 +77,104 @@ This results in the following structure:
 
 ...
 
-% If you have references in "myrefs.bib"
+% If you have references in "library.bib"
 \bibliographystyle{unsrtnat}
-\bibliography{myrefs}
+\bibliography{library}
 
 \end{document}
 ```
 
-# Options
+# <a name='options'></a>Options
+
+## <a name='articleclassoptions'></a>article class options
 
 *   Any option for the `article` class, such as `12pt`, `fleqn`, etc.
 
-*   `garamond`, `times`, `verdana`
+## <a name='font'></a>font
+
+*   `font=[default], garamond, times, verdana`
 
     Choose a font.
-    The default computer-modern font is used if no font is specified.
-    If you select one of these fonts, switch in compilation from using `pdflatex` to `xelatex`.
-    XeLaTeX is similar to `pdflatex` but it allows for the usage of TrueType-fonts.
 
-*   `narrow`, `wide`, `wwide`
+    -   `default`: the default LaTeX font (computer-modern).
+    -   `garamond`: the Garamond font, required `xelatex`.
+    -   `times`: the Times New Roman font, required `xelatex`.
+    -   `verdana`: the Verdana font, required `xelatex`.
 
-    Change the page margins (from largest to smallest margins: `narrow`, (normal), `wide`, `wwide`).
+## <a name='layout'></a>layout
+
+*   `left=25mm, ...`
+
+    Left margin. Passed to the `geometry` package.
+
+*   `right=25mm, ...`
+
+    Right margin. Passed to the `geometry` package.
+
+*   `top=30mm, ...`
+
+    Top margin. Passed to the `geometry` package.
+
+*   `bottom=30mm, ...`
+
+    Bottom margin. Passed to the `geometry` package.
+
+*   `pagenumbers=[true], false`
+
+    Show page numbers.
 
 *   `doublespacing`
 
     Set the line spacing to double, useful during the review process.
 
-*   `empty`
+*   `linenumbers`
 
-    Do not use any header (does not even show the page number).
+    Add line numbers, useful during the review process.
 
-*   `plainparagraph`
+## <a name='bibliography'></a>bibliography
 
-    Do not append a period to `\paragraph`.
+*   `bibpackage=[natbib], biblatex, none`
 
-*   `displayparagraph`
+    Choose the bibliography package.
+    In both cases citations are with compressed numbers.
 
-    Show paragraph titles in the text (instead of inline).
+*   `bibsize=[scriptsize], ...`
 
-*   `twocolumnbib`
+    The font-size of the bibliography.
 
-    Use a two-column bibliography.
+*   `bibcols=[1], ...`
 
-*   `normalsizebib`
+    Number of (additional) columns in the bibliography.
+    **Warning**: this option is only implemented for `natbib`.
 
-    Bibliography in normal font size (instead of `\scriptsize`).
+## <a name='headers'></a>headers
 
-*   `namecite`
+*   `paragraphshape=[runin], ...`
 
-    Use name-citations instead of numbers.
-    Often combined with `\bibliographystyle{apalike}` (see below).
+    The shape of the paragraph header.
 
-*   `showlinks`
+*   `paragraphafter=[.], ...`
 
-    Highlight links in the displayed (i.e. not the printed one) PDF.
+    The character after the paragraph header.
 
-*   `colorlinks`
+# <a name='natbib'></a>Natbib: doi and arXiv
 
-    Show links using a blue color.
+If you use [natbib](http://ctan.org/pkg/natbib) to handle your bibliography,
+you can select your `\bibliographystyle{...}` of preference before calling `\bibliography{...}`.
+An extended [unsrtnat.bst](src/unsrtnat.bst) is available that includes hyperlinks to the doi and arXiv-id.
 
-# Citations
-
-Citations and references are handled using [natbib](http://ctan.org/pkg/natbib).
-You can select your `\bibliographystyle{...}` of preference before calling `\bibliography{...}`.
-An extended [unsrtnat.bst](src/unsrtnat.bst) is available that includes output
-for the `arxivid` field.
-Similarly a customised *apalike* style is available ([apalike.bst](src/apalike.bst)).
-
-A little bit more customised is the *unsrtnat_hyperlink* bibliography style,
-in which the *doi* (or, if missing, the *arxivid* or *url*) are used
-to create a hyperlink behind the title.
-The *doi* or *arxivid* are not explicitly shown in citation.
-
-Following standard *natbib*, one can use `\cite{...}` or `\citep{...}`
-for normal citations and `\citet{...}` to include the name.
-[See also this cheat-sheet](http://merkel.texture.rocks/Latex/natbib.php).
-
-Note that the outputted reference list depends largely on the content of the included `bib`-file.
-A simple command-line tool, [GooseBib](https://github.com/tdegeus/GooseBib),
-is available to clean up arbitrary `bib`-files.
-
-# Examples
+# <a name='examples'></a>Examples
 
 *   [Basic example](examples/basic/example.tex),
     see [PDF](examples/basic/example.pdf).
 
-*   [Basic example with `namecite`](examples/namecite/example.tex),
-    see [PDF](examples/basic/example.pdf).
+*   [Basic example with biblatex](examples/basic_biblatex/example.tex),
+    see [PDF](examples/basic_biblatex/example.pdf).
 
 *   [Two-column example](examples/twocolumn/example.tex),
     see [PDF](examples/twocolumn/example.pdf).
 
-# Tips
+# <a name='tips'></a>Tips
 
 *   [Dummy subfigure label](examples/general-trick_dummy-subfigure/example.tex),
     see [PDF](examples/general-trick_dummy-subfigure/example.pdf).

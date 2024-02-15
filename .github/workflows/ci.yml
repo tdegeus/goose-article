@@ -19,10 +19,10 @@ jobs:
         working_directory: examples/basic
         root_file: main.tex
 
-    - name: Compile LaTeX example - namecite
+    - name: Compile LaTeX example - basic_biblatex
       uses: dante-ev/latex-action@latest
       with:
-        working_directory: examples/namecite
+        working_directory: examples/basic_biblatex
         root_file: main.tex
 
     - name: Compile LaTeX example - twocolumn

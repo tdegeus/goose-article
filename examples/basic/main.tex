@@ -1,9 +1,6 @@
-\documentclass[colorlinks]{goose-article}
+\documentclass{goose-article}
 
 \usepackage{lipsum}
-
-% \usepackage{lineno}
-% \linenumbers
 
 \title{goose-article: customized \LaTeX-article}
 
@@ -15,11 +12,13 @@
     Switzerland
 }
 
-\contact{
+\date{
     $^*$Contact:
     \href{mailto:tom@geus.me}{tom@geus.me}
     \hspace{1mm}--\hspace{1mm}
     \href{http://www.geus.me}{www.geus.me}
+    \\
+    \today
 }
 
 \hypersetup{pdfauthor={T.W.J. de Geus}}
@@ -39,7 +38,7 @@
 
 \section{Introduction}
 
-\lipsum[2-4] \citep{Geus10,Geus11,Geus12,Geus13,Geus14,Geus15,Geus16,Geus17}
+\lipsum[2-4] \cite{Geus10,Geus11,Geus12,Geus13,Geus14,Geus15,Geus16,Geus17,Geus19}
 \begin{equation}
     f(x) = x^2
 \end{equation}
@@ -59,7 +58,7 @@
 
 \section{Body}
 
-\lipsum[7-12] \citet{Geus10,Geus11,Geus12,Geus13,Geus14,Geus15,Geus16,Geus17,Geus19} ...
+\lipsum[7-12]
 
 \begin{figure}[htp]
     \centering
