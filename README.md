@@ -165,19 +165,19 @@ An extended [unsrtnat.bst](src/unsrtnat.bst) is available that includes hyperlin
 
 # <a name='examples'></a>Examples
 
-*   [Basic example](examples/basic/example.tex),
-    see [PDF](examples/basic/example.pdf).
+*   [Basic example](examples/basic/main.tex),
+    see [PDF](examples/basic/main.pdf).
 
-*   [Basic example with biblatex](examples/basic_biblatex/example.tex),
-    see [PDF](examples/basic_biblatex/example.pdf).
+*   [Basic example with biblatex](examples/basic_biblatex/main.tex),
+    see [PDF](examples/basic_biblatex/main.pdf).
 
-*   [Two-column example](examples/twocolumn/example.tex),
-    see [PDF](examples/twocolumn/example.pdf).
+*   [Two-column example](examples/twocolumn/main.tex),
+    see [PDF](examples/twocolumn/main.pdf).
 
 # <a name='tips'></a>Tips
 
-*   [Dummy subfigure label](examples/general-trick_dummy-subfigure/example.tex),
-    see [PDF](examples/general-trick_dummy-subfigure/example.pdf).
+*   [Dummy subfigure label](examples/general-trick_dummy-subfigure/main.tex),
+    see [PDF](examples/general-trick_dummy-subfigure/main.pdf).
 
-*   [Dummy subfigure label, upper-case](examples/general-trick_dummy-subfigure-upper/example.tex),
-    see [PDF](examples/general-trick_dummy-subfigure-upper/example.pdf).
+*   [Dummy subfigure label, upper-case](examples/general-trick_dummy-subfigure-upper/main.tex),
+    see [PDF](examples/general-trick_dummy-subfigure-upper/main.pdf).
